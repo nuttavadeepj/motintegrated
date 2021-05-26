@@ -19,11 +19,13 @@ class Welcome extends StatelessWidget {
                   children: [
                     Text('Miracle',
                         style: TextStyle(
+                          fontFamily: 'Jost',
                             color: Color(0xff9D8671),
                             fontSize: 57,
                             fontWeight: FontWeight.w800)),
                     Text('Of Trash',
                         style: TextStyle(
+                          fontFamily: 'Jost',
                             color: Color(0xff9D8671),
                             fontSize: 57,
                             fontWeight: FontWeight.w800)),
@@ -34,6 +36,7 @@ class Welcome extends StatelessWidget {
                           child: Text(
                               'MOT is an application for something bra bra barbrba lxdfjsd dfjsdf sdfkjsdkfjdjf that iedjd dskfjsd is to the moon doi theerjsdfo sjkdfs sjkdf dzkf',
                               style: TextStyle(
+                                fontFamily: 'Jost',
                                   color: Color(0xff545454),
                                   height: 1.3,
                                   fontWeight: FontWeight.w600))),
@@ -60,6 +63,7 @@ class Welcome extends StatelessWidget {
                           Text(
                             'Get start',
                             style: TextStyle(
+                              fontFamily: 'Jost',
                                 color: Colors.white,
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold),

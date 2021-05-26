@@ -48,6 +48,29 @@ flutter:
   assets:
   - images/
 
+  fonts:
+    - family: Jost
+      fonts:
+      - asset: fonts/Jost-Black.ttf
+      - asset: fonts/Jost-BlackItalic.ttf
+      - asset: fonts/Jost-Bold.ttf
+      - asset: fonts/Jost-BoldItalic.ttf
+      - asset: fonts/Jost-ExtraBold.ttf
+      - asset: fonts/Jost-ExtraBoldItalic.ttf
+      - asset: fonts/Jost-ExtraLight.ttf
+      - asset: fonts/Jost-ExtraLightItalic.ttf
+      - asset: fonts/Jost-Italic-VariableFont_wght.ttf
+      - asset: fonts/Jost-Italic.ttf
+      - asset: fonts/Jost-Light.ttf
+      - asset: fonts/Jost-LightItalic.ttf
+      - asset: fonts/Jost-Medium.ttf
+      - asset: fonts/Jost-MediumItalic.ttf
+      - asset: fonts/Jost-Regular.ttf
+      - asset: fonts/Jost-SemiBold.ttf
+      - asset: fonts/Jost-SemiBoldItalic.ttf
+      - asset: fonts/Jost-Thin.ttf
+      - asset: fonts/Jost-ThinItalic.ttf
+      - asset: fonts/Jost-VariableFont_wght.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

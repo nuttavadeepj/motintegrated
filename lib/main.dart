@@ -9,6 +9,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'MOT', theme: ThemeData(fontFamily: 'jost'), home: Welcome());
+        title: 'MOT', theme: ThemeData(fontFamily: 'Jost'), home: Welcome());
   }
 }
