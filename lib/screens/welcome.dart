@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motintegrated/screens/signin.dart';
+import 'package:motintegrated/screens/aboutus.dart';
 
 class Welcome extends StatelessWidget {
   @override
@@ -35,14 +35,14 @@ class Welcome extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 8, bottom: 30),
                       child: Container(
-                          width: 340,
+                          width: MediaQuery.of(context).size.width / 1.17,
                           child: Text(
-                              'MOT is an application for something bra bra barbrba lxdfjsd dfjsdf sdfkjsdkfjdjf that iedjd dskfjsd is to the moon doi theerjsdfo sjkdfs sjkdf dzkf',
+                              'Would it be better if the garbage you left every day can create benefits for you. It is not just you sell a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 fontFamily: 'Jost',
                                   color: Color(0xff545454),
-                                  height: 1.3,
+                                  height: 1.1,
                                   fontWeight: FontWeight.w500))),
                     ),
                     ElevatedButton(
@@ -50,7 +50,7 @@ class Welcome extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => (SignIn())));
+                                builder: (context) => (AboutUs())));
                       },
                       style: ElevatedButton.styleFrom(
                           primary: Color(0xFF4A5F30),

@@ -19,7 +19,7 @@ class AboutUs extends StatelessWidget {
                     Image.asset(
                       'images/mot-logo.png',
                       width: 217.74,
-                      height: 127.54,
+                      height: 120.54,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 30),
@@ -27,22 +27,48 @@ class AboutUs extends StatelessWidget {
                         width: detail,
                         child: Column(
                           children: <Widget>[
-                            Text.rich(
-                              TextSpan(
-                                  text: 'Miracle of Trash or MOT',
-                                  style: TextStyle(
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Text(
+                                'Do you know that the compostable waste such as fruit debris, fruit peel, leaves, meat debris can be used again? ',
+                                style: TextStyle(
+                                    fontSize: 16,
                                     fontFamily: 'Jost',
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.6,
-                                  ),
-                                  children: <TextSpan>[
+                                    height: 1.3),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ),
+                            RichText(
+                              textAlign: TextAlign.justify,
+                              text: TextSpan(
+                                  text: 'Miracle of Trash (MOT)',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                      fontSize: 16),
+                                  children: [
                                     TextSpan(
-                                      text:
-                                          ' is the application for Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                  ]),
+                                        text:
+                                            ' is a service that encourages you to separate waste. You just use our trash bags and we will buy a compostable waste from you. You send us the waste then we will have many special deals for you :)',
+                                        style: TextStyle(
+                                          fontFamily: 'Jost',
+                                          height: 1.3,
+                                          fontWeight: FontWeight.normal,
+                                          color: Colors.black,
+                                        ))
+                                  ]
+
+                                  // children: <TextSpan>[
+                                  //   TextSpan(text: 'Do you know that the compostable waste such as fruit debris, fruit peel, leaves, meat debris can be used again? ', style: TextStyle(fontSize: 14),
+                                  // ),
+
+                                  //   TextSpan(
+                                  //       text: '"MOT"',
+                                  //       style: TextStyle(
+                                  //           fontWeight: FontWeight.bold)),
+                                  //   TextSpan(text: 'is a service that encourages you to separate waste. You just use our trash bags and we will buy a compostable waste from you. You send us the waste then we will have many special deals for you :)'),
+                                  // ],
+                                  ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 20),
