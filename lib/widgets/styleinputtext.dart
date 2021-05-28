@@ -32,11 +32,10 @@ class StyledInputText extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             icon: Icon(icon, color: Colors.grey, size: 20),
-            fillColor: Colors.white,
-            filled: true,
+            fillColor: Colors.white,           
             border: InputBorder.none,
             isDense: true,
-            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           ),
           // validator: (value) {
           //   if (value.isEmpty) {

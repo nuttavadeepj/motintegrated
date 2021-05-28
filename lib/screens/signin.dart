@@ -14,26 +14,11 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF8F8ED),
       body: Container(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 38, top: 70),
-                  child: Container(
-                    width: 200,
-                    height: 200,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                      image: AssetImage("images/logo.png"),
-                    )),
-                  ),
-                ),
-              ],
-            ),
             Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 1.0, horizontal: 40),
@@ -50,6 +35,25 @@ class _SignInState extends State<SignIn> {
                           icon: Icons.vpn_key,
                           errorText: "error",
                           isPassword: true),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () => {},
+                              child: Text(
+                                'Forget password?',
+                                style: TextStyle(
+                                  color: Color(0xFF545454),
+                                  fontFamily: 'Jost',
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )),

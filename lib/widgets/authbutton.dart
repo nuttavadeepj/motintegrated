@@ -27,18 +27,6 @@ class AuthButton extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onPressed: onPressed,
-            // style: OutlinedButton.styleFrom(
-            //   primary: Colors.white,
-            //   textStyle: TextStyle(
-            //     fontFamily: 'Jost',
-            //     fontWeight: FontWeight.bold,
-            //   ),
-            //   padding: EdgeInsets.symmetric(horizontal: 40, vertical: 2),
-            //   // shape: RoundedRectangleBorder(
-            //   //     borderRadius: BorderRadius.circular(30.0))
-            // ),
-            // onPressed: onPressed,
-            // child: child,
           ),
         ),
       );

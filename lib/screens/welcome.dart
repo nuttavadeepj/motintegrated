@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:motintegrated/screens/aboutus.dart';
+import 'package:motintegrated/screens/authen.dart';
 
 class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Scaffold(
         body: Container(
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.only( left: 30),
-            child: 
-            Row(
+            padding: const EdgeInsets.only(left: 30),
+            child: Row(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,14 +18,14 @@ class Welcome extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height / 1.75),
                     Text('Miracle',
                         style: TextStyle(
-                          fontFamily: 'Jost',
+                            fontFamily: 'Jost',
                             color: Color(0xff9D8671),
                             fontSize: 57,
                             height: 1.4,
                             fontWeight: FontWeight.w700)),
                     Text('Of Trash',
                         style: TextStyle(
-                          fontFamily: 'Jost',
+                            fontFamily: 'Jost',
                             color: Color(0xff9D8671),
                             fontSize: 57,
                             height: 1,
@@ -37,10 +35,10 @@ class Welcome extends StatelessWidget {
                       child: Container(
                           width: MediaQuery.of(context).size.width / 1.17,
                           child: Text(
-                              'Would it be better if the garbage you left every day can create benefits for you. It is not just you sell a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
+                              'Would it be better if the garbage you left every day can create benefits for you. We will change your waste into biogas! It is not just you give a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                fontFamily: 'Jost',
+                                  fontFamily: 'Jost',
                                   color: Color(0xff545454),
                                   height: 1.1,
                                   fontWeight: FontWeight.w500))),
@@ -50,7 +48,7 @@ class Welcome extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => (AboutUs())));
+                                builder: (context) => (Authen())));
                       },
                       style: ElevatedButton.styleFrom(
                           primary: Color(0xFF4A5F30),
@@ -61,20 +59,22 @@ class Welcome extends StatelessWidget {
                           ),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(40.0))),
-                      child: 
-                      Row(
+                      child: Row(
                         children: [
                           Text(
                             'Get start',
                             style: TextStyle(
-                              fontFamily: 'Jost',
+                                fontFamily: 'Jost',
                                 color: Colors.white,
                                 fontSize: 24,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.w500),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
-                            child: Icon(Icons.arrow_forward, size: 30,),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              size: 30,
+                            ),
                           )
                         ],
                       ),
