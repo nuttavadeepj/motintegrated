@@ -4,7 +4,6 @@ import 'package:motintegrated/screens/signin.dart';
 class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double detail = MediaQuery.of(context).size.width * 0.9;
 
     return MaterialApp(
       home: Scaffold(
@@ -22,24 +21,27 @@ class Welcome extends StatelessWidget {
                           fontFamily: 'Jost',
                             color: Color(0xff9D8671),
                             fontSize: 57,
-                            fontWeight: FontWeight.w800)),
+                            height: 1.4,
+                            fontWeight: FontWeight.w700)),
                     Text('Of Trash',
                         style: TextStyle(
                           fontFamily: 'Jost',
                             color: Color(0xff9D8671),
                             fontSize: 57,
-                            fontWeight: FontWeight.w800)),
+                            height: 1,
+                            fontWeight: FontWeight.w700)),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 30),
+                      padding: const EdgeInsets.only(top: 8, bottom: 30),
                       child: Container(
-                          width: detail,
+                          width: 340,
                           child: Text(
                               'MOT is an application for something bra bra barbrba lxdfjsd dfjsdf sdfkjsdkfjdjf that iedjd dskfjsd is to the moon doi theerjsdfo sjkdfs sjkdf dzkf',
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                 fontFamily: 'Jost',
                                   color: Color(0xff545454),
                                   height: 1.3,
-                                  fontWeight: FontWeight.w600))),
+                                  fontWeight: FontWeight.w500))),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -50,13 +52,13 @@ class Welcome extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                           primary: Color(0xFF4A5F30),
-                          elevation: 5,
+                          // elevation: 5,
                           padding: EdgeInsets.symmetric(
-                            horizontal: 25,
-                            vertical: 10,
+                            horizontal: 17,
+                            vertical: 6,
                           ),
                           shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(40.0))),
+                              borderRadius: BorderRadius.circular(40.0))),
                       child: 
                       Row(
                         children: [
@@ -69,7 +71,7 @@ class Welcome extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 12.0),
+                            padding: const EdgeInsets.only(left: 10.0),
                             child: Icon(Icons.arrow_forward, size: 30,),
                           )
                         ],
