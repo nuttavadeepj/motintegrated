@@ -57,17 +57,6 @@ class AboutUs extends StatelessWidget {
                                           color: Colors.black,
                                         ))
                                   ]
-
-                                  // children: <TextSpan>[
-                                  //   TextSpan(text: 'Do you know that the compostable waste such as fruit debris, fruit peel, leaves, meat debris can be used again? ', style: TextStyle(fontSize: 14),
-                                  // ),
-
-                                  //   TextSpan(
-                                  //       text: '"MOT"',
-                                  //       style: TextStyle(
-                                  //           fontWeight: FontWeight.bold)),
-                                  //   TextSpan(text: 'is a service that encourages you to separate waste. You just use our trash bags and we will buy a compostable waste from you. You send us the waste then we will have many special deals for you :)'),
-                                  // ],
                                   ),
                             ),
                             Padding(
