@@ -10,12 +10,14 @@ class Welcome extends StatelessWidget {
         body: Container(
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.only(top: 440, left: 30),
-            child: Row(
+            padding: const EdgeInsets.only( left: 30),
+            child: 
+            Row(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: MediaQuery.of(context).size.height / 1.75),
                     Text('Miracle',
                         style: TextStyle(
                           fontFamily: 'Jost',
