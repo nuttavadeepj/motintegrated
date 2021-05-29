@@ -4,7 +4,6 @@ import 'package:motintegrated/screens/home.dart';
 import 'package:motintegrated/screens/aboutus.dart';
 import 'package:motintegrated/screens/shop.dart';
 
-
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
   @override
@@ -25,22 +24,27 @@ class NavigationDrawerWidget extends StatelessWidget {
                 )),
               ),
             ),
-
             const SizedBox(height: 24),
-            CustomListTile(FaIcon(FontAwesomeIcons.home), 'Home', () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home()),
-                    )
-                  }),
+            CustomListTile(
+                FaIcon(FontAwesomeIcons.home),
+                'Home',
+                () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      )
+                    }),
             const SizedBox(height: 10),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.infoCircle), 'About', () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AboutUs()),
-                    )
-                  }),
+                FaIcon(FontAwesomeIcons.infoCircle),
+                'About',
+                () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AboutUs()),
+                      ),
+                      print('press')
+                    }),
             const SizedBox(height: 10),
             CustomListTile(FaIcon(FontAwesomeIcons.store), 'Shop', () => {}),
             const SizedBox(height: 10),
@@ -48,12 +52,10 @@ class NavigationDrawerWidget extends StatelessWidget {
                 FaIcon(FontAwesomeIcons.ticketAlt), 'Deal', () => {}),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.truck), 'Tracking', () => {}),
-
-
             Divider(color: Color(0xff4A5F30)),
             const SizedBox(height: 10),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.signOutAlt), 'Login', () => {}),
+                FaIcon(FontAwesomeIcons.signOutAlt), 'Signout', () => {}),
             const SizedBox(height: 80),
             Profile('Porju', 'helloporju', () => {})
           ],
@@ -118,7 +120,7 @@ class Profile extends StatelessWidget {
 class CustomListTile extends StatelessWidget {
   FaIcon faIcon;
   String text;
-  Function onTap;
+  final onTap;
   CustomListTile(this.faIcon, this.text, this.onTap);
 
   @override
@@ -127,14 +129,14 @@ class CustomListTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20.0, 0, 8.0, 0),
       child: InkWell(
         splashColor: Color(0xffDCDDA6),
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(children: <Widget>[
-                faIcon,
+                Container(width: 25, child: faIcon),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(text,
