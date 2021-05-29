@@ -20,14 +20,14 @@ class Welcome extends StatelessWidget {
                         style: TextStyle(
                             fontFamily: 'Jost',
                             color: Color(0xff9D8671),
-                            fontSize: 57,
+                            fontSize: 60,
                             height: 1.4,
                             fontWeight: FontWeight.w700)),
                     Text('Of Trash',
                         style: TextStyle(
                             fontFamily: 'Jost',
                             color: Color(0xff9D8671),
-                            fontSize: 57,
+                            fontSize: 60,
                             height: 1,
                             fontWeight: FontWeight.w700)),
                     Padding(
@@ -35,9 +35,10 @@ class Welcome extends StatelessWidget {
                       child: Container(
                           width: MediaQuery.of(context).size.width / 1.17,
                           child: Text(
-                              'Would it be better if the garbage you left every day can create benefits for you. We will change your waste into biogas! It is not just you give a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
+                              'Would it be better if the garbage you left every day can create benefits for you. We will change your food waste into biogas! It is not just you give a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
                               textAlign: TextAlign.justify,
                               style: TextStyle(
+                                  fontSize: 13.5,
                                   fontFamily: 'Jost',
                                   color: Color(0xff545454),
                                   height: 1.1,
@@ -66,8 +67,8 @@ class Welcome extends StatelessWidget {
                             style: TextStyle(
                                 fontFamily: 'Jost',
                                 color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500),
+                                fontSize: 25,
+                                fontWeight: FontWeight.w600),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
