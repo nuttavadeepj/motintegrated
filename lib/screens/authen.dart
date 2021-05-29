@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/screens/signin.dart';
+import 'package:motintegrated/screens/signup.dart';
 
 class Authen extends StatefulWidget {
   @override
@@ -78,15 +79,7 @@ class _AuthenState extends State<Authen> {
         ),
         body: TabBarView(children: [
           Container(height: 200, child: SignIn()),
-          Container(
-            height: 200,
-            child: Center(
-              child: Text(
-                "Sign Up",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
+          Container(height: 200, child: SignUp()),
         ]),
       ),
     );
