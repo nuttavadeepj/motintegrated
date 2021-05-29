@@ -43,10 +43,17 @@ class NavigationDrawerWidget extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => AboutUs()),
                       ),
-                      print('press')
                     }),
             const SizedBox(height: 10),
-            CustomListTile(FaIcon(FontAwesomeIcons.store), 'Shop', () => {}),
+            CustomListTile(
+                FaIcon(FontAwesomeIcons.store),
+                'Shop',
+                () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ShopPage()),
+                      ),
+                    }),
             const SizedBox(height: 10),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.ticketAlt), 'Deal', () => {}),
