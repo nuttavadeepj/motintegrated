@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 import '../main.dart';
 
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
