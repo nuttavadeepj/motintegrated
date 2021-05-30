@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motintegrated/widgets/hamburger.dart';
 
 class AboutUs extends StatelessWidget {
   @override
@@ -8,6 +9,12 @@ class AboutUs extends StatelessWidget {
 
     return MaterialApp(
       home: Scaffold(
+        drawer: NavigationDrawerWidget(),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         body: new Container(
           child: Padding(
             padding: const EdgeInsets.only(top: 380, left: 30),
@@ -56,8 +63,7 @@ class AboutUs extends StatelessWidget {
                                           fontWeight: FontWeight.normal,
                                           color: Colors.black,
                                         ))
-                                  ]
-                                  ),
+                                  ]),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 20),

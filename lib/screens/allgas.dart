@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/screens/product_detail.dart';
 
-class Product extends StatelessWidget {
+class AllGas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +12,7 @@ class Product extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(right: 15),
             width: MediaQuery.of(context).size.width - 30,
-            height: MediaQuery.of(context).size.height - 0,
+            height: MediaQuery.of(context).size.height - 100,
             child: GridView.count(
                 crossAxisCount: 2,
                 primary: false,
@@ -20,27 +20,6 @@ class Product extends StatelessWidget {
                 mainAxisSpacing: 15.0,
                 childAspectRatio: 0.8,
                 children: <Widget>[
-                  _buildCard(
-                      'Orange Trash Bag',
-                      '80฿',
-                      'images/orangebag.png',
-                      'Orange trash bag. It is a trash bag that is used for holding biodegradable garbage with the size 20x30 ”for 20 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
-                      false,
-                      context),
-                  _buildCard(
-                      'Purple Trash Bag',
-                      '80฿',
-                      'images/purplebag.png',
-                      'Purple trash bag. It is a trash bag that is used for holding biodegradable garbage with the size 30x40 ”for 12 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
-                      false,
-                      context),
-                  _buildCard(
-                      'Pink Trash Bag',
-                      '80฿',
-                      'images/pinkbag.png',
-                      'Pink trash bag. It is a trash bag that is used for holding biodegradable garbage with the size 40 x 60 ”for 6 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
-                      false,
-                      context),
                   _buildCard('Biogas 3 liter', '300฿', 'images/gas.png',
                       'Biogas produced by MOT, which is made from compostable waste, in 3 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine.', false, context),
                   _buildCard('Biogas 5 liter', '500฿', 'images/gas.png',
@@ -84,12 +63,12 @@ class Product extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
+                  padding: const EdgeInsets.only(top: 8),
                   child: Hero(
                     tag: imgPath,
                     child: Container(
-                        height: 130.0,
-                        width: 130.0,
+                        height: 150.0,
+                        width: 150.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(imgPath),
@@ -101,6 +80,7 @@ class Product extends StatelessWidget {
                     style: TextStyle(color: Color(0xff9D8671), fontSize: 26.0, fontWeight: FontWeight.w500)),
                 Text(name,
                     style: TextStyle(color: Color(0xff323232), fontSize: 20.0)),
+                
               ],
             ),
           )),

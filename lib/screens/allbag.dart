@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/screens/product_detail.dart';
 
-class Product extends StatelessWidget {
+class AllBag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +12,7 @@ class Product extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(right: 15),
             width: MediaQuery.of(context).size.width - 30,
-            height: MediaQuery.of(context).size.height - 0,
+            height: MediaQuery.of(context).size.height - 50,
             child: GridView.count(
                 crossAxisCount: 2,
                 primary: false,
@@ -41,12 +41,6 @@ class Product extends StatelessWidget {
                       'Pink trash bag. It is a trash bag that is used for holding biodegradable garbage with the size 40 x 60 ”for 6 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
                       false,
                       context),
-                  _buildCard('Biogas 3 liter', '300฿', 'images/gas.png',
-                      'Biogas produced by MOT, which is made from compostable waste, in 3 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine.', false, context),
-                  _buildCard('Biogas 5 liter', '500฿', 'images/gas.png',
-                      'Biogas produced by MOT, which is made from compostable waste, in 5 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine', false, context),
-                  _buildCard('Biogas 10 liter', '1000฿', 'images/gas.png',
-                      'Biogas produced by MOT, which is made from compostable waste, in 10 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine', false, context),
                 ]),
           ),
           SizedBox(height: 15.0)
@@ -83,24 +77,22 @@ class Product extends StatelessWidget {
                 color: Colors.white),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Hero(
-                    tag: imgPath,
-                    child: Container(
-                        height: 130.0,
-                        width: 130.0,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(imgPath),
-                                fit: BoxFit.contain))),
-                  ),
+                Hero(
+                  tag: imgPath,
+                  child: Container(
+                      height: 130.0,
+                      width: 120.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(imgPath),
+                              fit: BoxFit.contain))),
                 ),
                 SizedBox(height: 7.0),
                 Text(price,
                     style: TextStyle(color: Color(0xff9D8671), fontSize: 26.0, fontWeight: FontWeight.w500)),
                 Text(name,
                     style: TextStyle(color: Color(0xff323232), fontSize: 20.0)),
+                
               ],
             ),
           )),
