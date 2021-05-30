@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motintegrated/widgets/styleinputtext.dart';
+import 'package:motintegrated/widgets/authtextfield.dart';
 import 'package:motintegrated/widgets/authbutton.dart';
 import 'package:motintegrated/screens/home.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motintegrated/screens/authen.dart';
+import 'package:motintegrated/screens/authentication.dart';
 
 class Welcome extends StatelessWidget {
   @override
