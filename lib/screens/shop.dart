@@ -66,7 +66,7 @@ class _ShopPageState extends State<ShopPage>
               labelColor: Color(0xff4A5F30),
               isScrollable: true,
               labelPadding: EdgeInsets.only(right: 45),
-              unselectedLabelColor: Color(0xffDCDDA6),
+              unselectedLabelColor: Color(0xffC4C4C4),
               tabs: [
                 Tab(
                   child: Text(
