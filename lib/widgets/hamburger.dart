@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motintegrated/screens/home.dart';
 import 'package:motintegrated/screens/aboutus.dart';
 import 'package:motintegrated/screens/shop.dart';
+import 'package:motintegrated/screens/profile.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -14,7 +15,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 38, top: 80),
+              padding: const EdgeInsets.only(left: 38, top: 40),
               child: Container(
                 width: 200,
                 height: 120,
@@ -24,9 +25,10 @@ class NavigationDrawerWidget extends StatelessWidget {
                 )),
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 1),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.home),
+                FaIcon(FontAwesomeIcons.home,
+                    size: 21, color: Color(0xff323232)),
                 'Home',
                 () => {
                       Navigator.push(
@@ -34,9 +36,9 @@ class NavigationDrawerWidget extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Home()),
                       )
                     }),
-            const SizedBox(height: 10),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.infoCircle),
+                FaIcon(FontAwesomeIcons.infoCircle,
+                    size: 21, color: Color(0xff323232)),
                 'About',
                 () => {
                       Navigator.push(
@@ -44,9 +46,9 @@ class NavigationDrawerWidget extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => AboutUs()),
                       ),
                     }),
-            const SizedBox(height: 10),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.store),
+                FaIcon(FontAwesomeIcons.store,
+                    size: 21, color: Color(0xff323232)),
                 'Shop',
                 () => {
                       Navigator.push(
@@ -54,17 +56,31 @@ class NavigationDrawerWidget extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => ShopPage()),
                       ),
                     }),
-            const SizedBox(height: 10),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.ticketAlt), 'Deal', () => {}),
+                FaIcon(FontAwesomeIcons.ticketAlt,
+                    size: 21, color: Color(0xff323232)),
+                'Deal',
+                () => {}),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.truck), 'Tracking', () => {}),
+                FaIcon(FontAwesomeIcons.truck,
+                    size: 21, color: Color(0xff323232)),
+                'Tracking',
+                () => {}),
             Divider(color: Color(0xff4A5F30)),
-            const SizedBox(height: 10),
             CustomListTile(
-                FaIcon(FontAwesomeIcons.signOutAlt), 'Signout', () => {}),
-            const SizedBox(height: 80),
-            Profile('Porju', 'helloporju', () => {})
+                FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xff323232)),
+                'Signout',
+                () => {}),
+            Profile(
+                AssetImage("images/profile.jpg"),
+                'Porjuu',
+                'helloporjuuuu@gmail.com',
+                () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                      ),
+                    }),
           ],
         ),
       ),
@@ -73,20 +89,25 @@ class NavigationDrawerWidget extends StatelessWidget {
 }
 
 class Profile extends StatelessWidget {
+  final image;
   String name;
   String email;
-  Function onTap;
-  Profile(this.name, this.email, this.onTap);
+  final onTap;
+  Profile(this.image, this.name, this.email, this.onTap);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 2),
         child: InkWell(
             splashColor: Colors.red,
-            onTap: () {},
+            onTap: onTap,
             child: Container(
               height: 100,
-              color: Color(0xffDCDDA6),
+              decoration: BoxDecoration(
+                color: Color(0xffDCDDA6),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              ),
               child: Row(
                 children: [
                   Container(
@@ -97,27 +118,46 @@ class Profile extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("images/profile.jpg"),
+                          image: image,
                         )),
                   ),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Text(
-                            'Porju',
-                            style: TextStyle(
-                                fontSize: 20, color: Color(0xff4A5F30)),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 190,
+                            child: Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                        fontSize: 20, color: Color(0xff4A5F30)),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          'helloporju@gmail.com',
-                          style:
-                              TextStyle(fontSize: 20, color: Color(0xff4A5F30)),
-                        )
-                      ])
+                          const SizedBox(height: 5),
+                          Container(
+                            width: 190,
+                            child: Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Text(
+                                  email,
+                                  style: TextStyle(
+                                      fontSize: 20, color: Color(0xff4A5F30)),
+                                ),
+                              ),
+                            ),
+                          )
+                        ]),
+                  )
                 ],
               ),
             )));
@@ -133,7 +173,7 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20.0, 0, 8.0, 0),
+      padding: const EdgeInsets.fromLTRB(22.0, 0, 8.0, 0),
       child: InkWell(
         splashColor: Color(0xffDCDDA6),
         onTap: onTap,
@@ -143,7 +183,7 @@ class CustomListTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(children: <Widget>[
-                Container(width: 25, child: faIcon),
+                Container(width: 22, child: faIcon),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(text,

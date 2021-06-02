@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motintegrated/widgets/hamburger.dart';
 
 class AboutUs extends StatelessWidget {
   @override
@@ -8,6 +9,12 @@ class AboutUs extends StatelessWidget {
 
     return MaterialApp(
       home: Scaffold(
+        drawer: NavigationDrawerWidget(),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         body: new Container(
           child: SingleChildScrollView(
             padding: const EdgeInsets.only(top: 250, left: 30),
