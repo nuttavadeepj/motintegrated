@@ -33,102 +33,118 @@ class Cart extends StatelessWidget {
     int _currentIndex2 = 0;
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 60,
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 60,
+                ),
               ),
-            ),
-            Text(
-              'My Cart',
-              style: TextStyle(
-                  fontSize: 35,
-                  fontFamily: 'Jost',
-                  fontWeight: FontWeight.w600),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
+              Text(
+                'My Cart',
+                style: TextStyle(
+                    fontSize: 35,
+                    fontFamily: 'Jost',
+                    fontWeight: FontWeight.w600),
               ),
-            ),
-            GFCarousel(
-              // autoPlay: true,
-              // autoPlayAnimationDuration: new Duration(seconds: 3),
-              items: shopPictureList.map(
-                (url) {
-                  var image = Image.network(
-                    url,
-                    
-                     fit: BoxFit.fill,
-                     
-                    // width: 1000,
-                    // height: double.infinity,
-                  );
-                  var item = Text(
-                    "${shopNameTagList[_currentIndex++]}",
-                    style: TextStyle(
-                        color: Color(0xff9D8671),
-                        fontFamily: 'Jost',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 28),
-                  );
-                  var price = Text(
-                    "${shopPriceList[_currentIndex2++]} ฿",
-                    style: TextStyle(
-                        color: Color(0xff000000),
-                        fontFamily: 'Jost',
-                        fontWeight: FontWeight.normal,
-                        fontSize: 20),
-                  );
-                  return Scaffold(
-                    body: Container(
-                      
-                      // children: [
-                      //   Container(
-                      margin: EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                ),
+              ),
+              GFCarousel(
+                // autoPlay: true,
+                // autoPlayAnimationDuration: new Duration(seconds: 3),
+                items: shopPictureList.map(
+                  (url) {
+                    var image = Image.network(
+                      url,
 
-                      child: Column(
-                        // borderRadius: BorderRadius.all(
-                        //   Radius.circular(15.0),
-                        // ),
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        // child: image,
-                        // child: Column(
-                        children: <Widget>[
-                          Expanded(
-                            child: image,
-                          ),
-                          Container(
-                            child: item,
-                          ),
-                          Container(
-                            child: price,
-                          )
-                        ],
+                      fit: BoxFit.fill,
+
+                      // width: 1000,
+                      // height: double.infinity,
+                    );
+                    var item = Text(
+                      "${shopNameTagList[_currentIndex++]}",
+                      style: TextStyle(
+                          color: Color(0xff9D8671),
+                          fontFamily: 'Jost',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 28),
+                    );
+                    var price = Text(
+                      "${shopPriceList[_currentIndex2++]} ฿",
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontFamily: 'Jost',
+                          fontWeight: FontWeight.normal,
+                          fontSize: 20),
+                    );
+                    return Scaffold(
+                      body: Container(
+                        // children: [
+                        //   Container(
+                        margin: EdgeInsets.all(8.0),
+
+                        child: Column(
+                          // borderRadius: BorderRadius.all(
+                          //   Radius.circular(15.0),
+                          // ),
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          // child: image,
+                          // child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              child: image,
+                            ),
+                            Container(
+                              child: item,
+                            ),
+                            Container(
+                              child: price,
+                            )
+                          ],
+                        ),
+                        height: 20000.0,
+                        color: Colors.amber,
                       ),
-                      height: 20000.0,
-                      color: Colors.amber,
-                    ),
-                  );
-                },
-              ).toList(),
-              onPageChanged: (index) {},
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 180, left: 30, right: 30),
-              child: new Container(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: RichText(
+                    );
+                  },
+                ).toList(),
+                onPageChanged: (index) {},
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 100, left: 30, right: 30),
+                child: new Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Purchase amount',
+                                style: TextStyle(
+                                    fontFamily: 'Jost',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 28,
+                                    height: 1.6,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      RichText(
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Purchase amount',
+                              text: '900',
                               style: TextStyle(
                                   fontFamily: 'Jost',
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.normal,
                                   fontSize: 28,
                                   height: 1.6,
                                   color: Color(0xff000000)),
@@ -136,55 +152,14 @@ class Cart extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '900',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontWeight: FontWeight.normal,
-                                fontSize: 28,
-                                height: 1.6,
-                                color: Color(0xff000000)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: ' ฿',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontWeight: FontWeight.normal,
-                                fontSize: 28,
-                                height: 1.6,
-                                color: Color(0xff000000)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: new Container(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: RichText(
+                      RichText(
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Delivery fee',
+                              text: ' ฿',
                               style: TextStyle(
                                   fontFamily: 'Jost',
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.normal,
                                   fontSize: 28,
                                   height: 1.6,
                                   color: Color(0xff000000)),
@@ -192,66 +167,40 @@ class Cart extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '50',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontWeight: FontWeight.normal,
-                                fontSize: 28,
-                                height: 1.6,
-                                color: Color(0xff000000)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: ' ฿',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontWeight: FontWeight.normal,
-                                fontSize: 28,
-                                height: 1.6,
-                                color: Color(0xff000000)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 20, left: 30, right: 30, bottom: 20),
-              child: new Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1.5, color: Color(0xff4A5F30)),
+                    ],
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: new Container(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: RichText(
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: new Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Delivery fee',
+                                style: TextStyle(
+                                    fontFamily: 'Jost',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 28,
+                                    height: 1.6,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      RichText(
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Total',
+                              text: '50',
                               style: TextStyle(
                                   fontFamily: 'Jost',
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.normal,
                                   fontSize: 28,
                                   height: 1.6,
                                   color: Color(0xff000000)),
@@ -259,73 +208,125 @@ class Cart extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '950',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontWeight: FontWeight.normal,
-                                fontSize: 28,
-                                height: 1.6,
-                                color: Color(0xffED8449)),
-                          ),
-                        ],
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: ' ฿',
+                              style: TextStyle(
+                                  fontFamily: 'Jost',
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 28,
+                                  height: 1.6,
+                                  color: Color(0xff000000)),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: ' ฿',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontWeight: FontWeight.normal,
-                                fontSize: 28,
-                                height: 1.6,
-                                color: Color(0xffED8449)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              (Cart()))); //Don't forget to change Navigator location of button
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF4A5F30),
-                    elevation: 5,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 25,
-                      vertical: 10,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(40.0))),
-                child: Center(
-                  child: Text(
-                    'Check Out',
-                    style: TextStyle(
-                        fontFamily: 'Jost',
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                    ],
                   ),
                 ),
               ),
-            )
-          ]),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 20, left: 30, right: 30, bottom: 20),
+                child: new Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(width: 1.5, color: Color(0xff4A5F30)),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: new Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Total',
+                                style: TextStyle(
+                                    fontFamily: 'Jost',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 28,
+                                    height: 1.6,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '950',
+                              style: TextStyle(
+                                  fontFamily: 'Jost',
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 28,
+                                  height: 1.6,
+                                  color: Color(0xffED8449)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: ' ฿',
+                              style: TextStyle(
+                                  fontFamily: 'Jost',
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 28,
+                                  height: 1.6,
+                                  color: Color(0xffED8449)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40, left: 30, right: 30, bottom: 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                (Cart()))); //Don't forget to change Navigator location of button
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF4A5F30),
+                      elevation: 5,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(40.0))),
+                  child: Center(
+                    child: Text(
+                      'Check Out',
+                      style: TextStyle(
+                          fontFamily: 'Jost',
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              )
+            ]),
+          ),
         ),
       ),
     );
