@@ -31,7 +31,7 @@ class Welcome extends StatelessWidget {
                             height: 1,
                             fontWeight: FontWeight.w700)),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8, bottom: 30),
+                      padding: const EdgeInsets.only(top: 8, bottom: 25),
                       child: Container(
                           width: MediaQuery.of(context).size.width / 1.17,
                           child: Text(
