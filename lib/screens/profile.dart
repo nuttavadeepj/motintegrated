@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
           title: Text(
             'Profile',
             style: TextStyle(
-                color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
+                color: Color(0xFF323232), fontSize: 25, fontFamily: 'Jost'),
           ),
           iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
           backgroundColor: Colors.transparent,
@@ -65,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               fontFamily: 'Jost',
                                               fontWeight: FontWeight.w600),
                                         ),
-                                        // StyledTextField(
+                                        // ProfileTextField(
                                         //     hintText: 'Nuttavadee Autsavapanakit',
                                         //     errorText: 'Error')
                                       )),
@@ -129,26 +129,26 @@ class _ProfilePageState extends State<ProfilePage> {
                           Label(
                             label: 'Email',
                           ),
-                          // StyledTextField(
-                          //     hintText: 'Email', errorText: 'Error'),
+                          ProfileTextField(
+                              hintText: 'Email', errorText: 'Error'),
                           UserInfo(info: 'hello@gmail.com'),
                           Label(
                             label: 'Phone Number',
                           ),
-                          // StyledTextField(
+                          // ProfileTextField(
                           //     hintText: 'Phone Number', errorText: 'Error'),
                           UserInfo(info: '0811234567'),
                           Label(
                             label: 'Address',
                           ),
-                          // StyledTextField(
+                          // ProfileTextField(
                           //     hintText: 'Address',
                           //     errorText: 'Error',
                           //     isAddress: true),
                           UserInfo(
                               info:
                                   '123/456, soi sathupradit 11, sathupradit, banananana, banananaa bangkok 10120 '),
-                          ProfileButton(
+                          Button(
                               text: 'Save',
                               width: 130.0,
                               onPressed: () {
@@ -200,7 +200,7 @@ class UserInfo extends StatelessWidget {
       child: Container(
           width: MediaQuery.of(context).size.width / 1.23,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
               border: Border.all(color: Color(0xff4A5F30), width: 1.0),
               color: Colors.white),
           child: Padding(

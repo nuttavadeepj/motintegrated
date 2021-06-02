@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
                             ),
                           }),
                 ),
-                ProfileButton(
+                Button(
                     text: 'Product',
                     width: 130.0,
                     onPressed: () => {

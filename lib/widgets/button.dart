@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ProfileButton extends StatelessWidget {
-  const ProfileButton({@required this.text,@required  this.width, required this.onPressed});
+class Button extends StatelessWidget {
+  const Button({@required this.text,@required  this.width, required this.onPressed});
   final text;
   final width;
   final void Function() onPressed;
