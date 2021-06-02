@@ -53,14 +53,17 @@ class Cart extends StatelessWidget {
               ),
             ),
             GFCarousel(
-              autoPlay: true,
-              autoPlayAnimationDuration: new Duration(seconds: 3),
+              // autoPlay: true,
+              // autoPlayAnimationDuration: new Duration(seconds: 3),
               items: shopPictureList.map(
                 (url) {
                   var image = Image.network(
                     url,
-                    fit: BoxFit.cover,
-                    width: 1000,
+                    
+                     fit: BoxFit.fill,
+                     
+                    // width: 1000,
+                    // height: double.infinity,
                   );
                   var item = Text(
                     "${shopNameTagList[_currentIndex++]}",
@@ -78,43 +81,34 @@ class Cart extends StatelessWidget {
                         fontWeight: FontWeight.normal,
                         fontSize: 20),
                   );
-                  return Container(
-                    margin: EdgeInsets.all(8.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.0),
-                      ),
+                  return Scaffold(
+                    body: Container(
+                      
+                      // children: [
+                      //   Container(
+                      margin: EdgeInsets.all(8.0),
+
                       child: Column(
+                        // borderRadius: BorderRadius.all(
+                        //   Radius.circular(15.0),
+                        // ),
                         crossAxisAlignment: CrossAxisAlignment.stretch,
+                        // child: image,
+                        // child: Column(
                         children: <Widget>[
                           Expanded(
                             child: image,
                           ),
-                          // ClipRRect(
-                          //   child: item,
-                          // ),
-                          // ClipRRect(
-                          //   child: item,
-                          //)
-                          // Expanded(child: item),
-                          // Expanded(child: price),
-                          
-                          // Padding(
-                          //   padding: const EdgeInsets.only(
-                          //     bottom: 0,left: 0,
-                          //   ),
-                          //   child:
-                          // item,
-                          // ),item,
-                          // Padding(
-                          //   padding: const EdgeInsets.only(
-                          //     left: 0,
-                          //   ),
-                          //   child:
-                          // price,
-                          // ),
+                          Container(
+                            child: item,
+                          ),
+                          Container(
+                            child: price,
+                          )
                         ],
                       ),
+                      height: 20000.0,
+                      color: Colors.amber,
                     ),
                   );
                 },
