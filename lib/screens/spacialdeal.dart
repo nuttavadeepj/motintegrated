@@ -9,95 +9,130 @@ class SpacialDeal extends StatelessWidget {
     "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
   ];
 
+  final List<String> spacialDetailList = [
+    "Get free 1 kg. vegetables from the organic farm.",
+    "Get free 1 icecream from monthlyking shop.",
+    "get discount 5% coupon at starduck coffee.",
+    "Get free 1 kg. vegetables from the organic farm.",
+    "Get free 1 icecream from monthlyking shop."
+  ];
+
+  final List<int> spacialPriceList = [
+    50,
+    20,
+    50,
+    50,
+    20,
+  ];
+
   Widget build(BuildContext context) {
-    void openDialog() {
+    double c_width = MediaQuery.of(context).size.width * 0.58;
+    void _showcontent() {
       showDialog(
-        context: context,
-        builder: (context) => SimpleDialog(
-          title: ListTile(
-            title: Center(
-              child: Text(
-                'Change password',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        context: context, barrierDismissible: false, // user must tap button!
+
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: new Text('You clicked on'),
+            content: new SingleChildScrollView(
+              child: new ListBody(
+                children: [
+                  new Text('This is a Dialog Box. Click OK to Close.'),
+                ],
               ),
             ),
-          ),
+            actions: [
+              new FlatButton(
+                child: new Text('Ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    var box = Container(
+      margin: const EdgeInsets.only(
+        top: 30.0,
+      ),
+      height: 130,
+      color: Color(0xffFFFBF2),
+      child: Container(
+        child: Row(
           children: [
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 33),
-                child: Form(
-                    child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(labelText: ('Enter your email')),
-                  // validator: (value) {
-                  //   if (value.isEmpty) {
-                  //     return "Please input an email";
-                  //   }
-                  // },
-                  onChanged: (value) {},
-                ))),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image.network(
+                'https://picsum.photos/250?image=9',
+              ),
+            ),
+            Container(
+              width: c_width,
+              child: Column(
                 children: [
-                  ElevatedButton(
-                      onPressed: () => Navigator.pop(context),
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size(103, 30),
-                          primary: Colors.grey,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 8,
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(5.0))),
-                      child: Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
                   Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.only(top: 10, left: 15),
+                    child: RichText(
+                      textAlign: TextAlign.left,
+                      text: TextSpan(
+                        text: 'Use 50 points\n',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 28),
+                        children: [
+                          TextSpan(
+                            text:
+                                'Get free 1 kg. vegetables from the organic farm.',
+                            style: TextStyle(
+                              fontFamily: 'Jost',
+                              height: 1.1,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     if (_formKey.currentState.validate()) {
-                  //       auth.sendPasswordResetEmail(email: _email);
-                  //       Navigator.of(context).pop();
-                  //       print("Password was sent");
-                  //       openCheckEmail();
-                  //     }
-                  //   },
-                  //   style: ElevatedButton.styleFrom(
-                  //       minimumSize: Size(103, 30),
-                  //       primary: Color(0xFFE17262),
-                  //       padding: EdgeInsets.symmetric(
-                  //         horizontal: 25,
-                  //         vertical: 8,
-                  //       ),
-                  //       shape: RoundedRectangleBorder(
-                  //           borderRadius: new BorderRadius.circular(5.0))),
-                  //   child: Text(
-                  //     'Request',
-                  //     style: TextStyle(
-                  //       color: Colors.white,
-                  //       fontSize: 14,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  // ),
+                  TextButton(
+                    onPressed: _showcontent,
+                    child:
+                        // crossAxisAlignment: CrossAxisAlignment.end,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                        Container(
+                      width: c_width,
+                      child: Text(
+                        'Exchange',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Color(0xff4A5F30),
+                          fontFamily: 'Jost',
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
-      );
-    }
-
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white,
+          boxShadow: [BoxShadow(color: Colors.black, blurRadius: 3)],
+        ),
+      ),
+    );
     double detail = MediaQuery.of(context).size.width * 0.9;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -147,83 +182,33 @@ class SpacialDeal extends StatelessWidget {
               ),
               color: Color(0xffE6E7C1)),
         ),
+        // SingleChildScrollView(
+        //   child:
+        // SingleChildScrollView(
+        //   child: Container(
+        //     child:
+
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(left: 20, right: 20.0),
-            child: Center(
-              child: Column(children: [
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 30.0,
-                  ),
-                  height: 130,
-                  color: Color(0xffFFFBF2),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            'https://picsum.photos/250?image=9',
-                          ),
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                  text: 'Use 50 points\n',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                      fontSize: 28),
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'Get free 1 kg. vegetables from \nthe organic farm.',
-                                      style: TextStyle(
-                                        fontFamily: 'Jost',
-                                        height: 1.1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.normal,
-                                        color: Color(0xff000000),
-                                      ),
-                                    
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 3)
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Entry B')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[100],
-                  child: const Center(child: Text('Entry C')),
-                ),
+            child: SingleChildScrollView(
+              child: Column(children: <Widget>[
+                box,
+                box,
+                box,
+                box,
+                box,
               ]),
             ),
+            // ),
             color: Color(0xffFFFBF2),
           ),
         ),
+        // Padding(padding: const EdgeInsets.only(bottom: 20.0),)
+
+        //   ),
+        // ),
+        // ),
       ],
     );
   }
