@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
 class StyledTextField extends StatelessWidget {
-  final label;
   final hintText;
   final isPassword;
   final isAddress;
   final errorText;
 
   StyledTextField(
-      {@required this.label,
-      @required this.hintText,
+      {@required this.hintText,
       this.isPassword = false,
       this.isAddress = false,
       @required this.errorText});
@@ -17,41 +15,37 @@ class StyledTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12.0),
+      padding: const EdgeInsets.only(top: 1.0),
       child: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                    fontFamily: 'Jost', color: Color(0xFF323232), fontSize: 19),
-              ),
-            ],
-          ),
           Container(
-            width: MediaQuery.of(context).size.width / 1.23,
+            width: MediaQuery.of(context).size.width,
             child: TextFormField(
               maxLines: isAddress ? 3 : 1,
               obscureText: isPassword,
               style: TextStyle(fontSize: 19, fontFamily: 'Jost'),
               decoration: InputDecoration(
                 hintText: hintText,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.check),
+                  padding: EdgeInsets.zero,
+                  constraints: BoxConstraints(),
+                  onPressed: () {},
+                ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 1, color: Color(0xFF323232)),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 1, color: Color(0xFF323232)),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 isDense: true,
                 fillColor: Colors.white,
                 contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    EdgeInsets.symmetric(horizontal: 12),
               ),
 
-              
               // validator: (value) {
               //   if (value.isEmpty) {
               //     return errorText;
