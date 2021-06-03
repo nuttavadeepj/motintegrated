@@ -39,7 +39,8 @@ class Home extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40, top: 10,bottom: 20),
+              padding: const EdgeInsets.only(
+                  left: 40, right: 40, top: 10, bottom: 20),
               child: Text(
                 '     Would it be better if the garbage you left every day can create benefits for you. We will change your food waste into biogas! It is not just you give a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
                 style: TextStyle(fontSize: 18, fontFamily: 'Jost', height: 1.3),
@@ -54,7 +55,7 @@ class Home extends StatelessWidget {
                   child: AboutButton(
                       text: 'About',
                       width: 130.0,
-                      height: 40.0,
+                      height: 43.0,
                       onPressed: () => {
                             Navigator.push(
                               context,
@@ -63,10 +64,9 @@ class Home extends StatelessWidget {
                             ),
                           }),
                 ),
-                ProfileButton(
+                Button(
                     text: 'Product',
                     width: 130.0,
-                    height: 40.0,
                     onPressed: () => {
                           Navigator.push(
                             context,

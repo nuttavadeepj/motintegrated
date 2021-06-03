@@ -16,8 +16,8 @@ class AboutUs extends StatelessWidget {
           elevation: 0.0,
         ),
         body: new Container(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 380, left: 30),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(top: 250, left: 30),
             child: Row(
               children: [
                 Column(
@@ -30,14 +30,14 @@ class AboutUs extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 30),
-                      child: new Container(
+                      child: Container(
                         width: detail,
                         child: Column(
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: Text(
-                                'Do you know that the compostable waste such as fruit debris, fruit peel, leaves, meat debris can be used again? ',
+                                '          Do you know that the compostable waste such as fruit debris, fruit peel, leaves, meat debris can be used again? ',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Jost',
@@ -48,7 +48,7 @@ class AboutUs extends StatelessWidget {
                             RichText(
                               textAlign: TextAlign.justify,
                               text: TextSpan(
-                                  text: 'Miracle of Trash (MOT)',
+                                  text: '          Miracle of Trash (MOT)',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
@@ -66,7 +66,7 @@ class AboutUs extends StatelessWidget {
                                   ]),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.only(bottom: 15),
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -81,7 +81,7 @@ class AboutUs extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 20),
+                                  padding: const EdgeInsets.only(bottom: 15),
                                 ),
                                 Text('Contact Us',
                                     style: TextStyle(

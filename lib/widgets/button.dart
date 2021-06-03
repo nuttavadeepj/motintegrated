@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ProfileButton extends StatelessWidget {
-  const ProfileButton(
-      {@required this.text, this.width, this.height, required this.onPressed});
+class Button extends StatelessWidget {
+  const Button({@required this.text,@required  this.width, required this.onPressed});
   final text;
   final width;
-  final height;
   final void Function() onPressed;
 
   @override
@@ -13,7 +11,7 @@ class ProfileButton extends StatelessWidget {
         padding: const EdgeInsets.only(top: 35, bottom: 35),
         child: Container(
           width: width,
-          height: height,
+          height: 43,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(30)),
               color: Color(0xFF4A5F30)),
