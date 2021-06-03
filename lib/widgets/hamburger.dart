@@ -4,6 +4,7 @@ import 'package:motintegrated/screens/home.dart';
 import 'package:motintegrated/screens/aboutus.dart';
 import 'package:motintegrated/screens/shop.dart';
 import 'package:motintegrated/screens/profile.dart';
+import 'package:motintegrated/screens/track.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -65,7 +66,12 @@ class NavigationDrawerWidget extends StatelessWidget {
                 FaIcon(FontAwesomeIcons.truck,
                     size: 21, color: Color(0xff323232)),
                 'Tracking',
-                () => {}),
+                () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TrackPage()),
+                      ),
+                    }),
             Divider(color: Color(0xff4A5F30)),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xff323232)),
