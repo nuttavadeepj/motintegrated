@@ -18,6 +18,7 @@ class _CheckOutState extends State<CheckOut> {
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
                   'Are you sure you want to check out your product? After confirming, the money in account will be paid off.',
+                  
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -25,12 +26,12 @@ class _CheckOutState extends State<CheckOut> {
                 FlatButton(
                   textColor: Colors.black,
                   onPressed: () => Navigator.pop(context),
-                  child: Text('CANCEL'),
+                  child: Text('CANCEL', style: TextStyle(color: Colors.black54, fontSize: 16)),
                 ),
                 FlatButton(
                   textColor: Colors.black,
                   onPressed: () {},
-                  child: Text('ACCEPT'),
+                  child: Text('ACCEPT', style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
                 ),
               ],
             ));
