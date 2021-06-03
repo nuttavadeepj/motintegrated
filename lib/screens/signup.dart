@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:motintegrated/widgets/authtextfield.dart';
-import 'package:motintegrated/widgets/authbutton.dart';
+import 'package:motintegrated/widgets/textfield.dart';
+import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/screens/home.dart';
 
 class SignUp extends StatefulWidget {
@@ -26,24 +27,24 @@ class _SignUpState extends State<SignUp> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        StyledInputText(
+                        AuthTextField(
                             hintText: "Name",
                             icon: Icons.account_circle,
                             errorText: "error"),
-                        StyledInputText(
+                        AuthTextField(
                             hintText: "Email",
                             icon: Icons.email,
                             errorText: "error"),
-                        StyledInputText(
+                        AuthTextField(
                             hintText: "Password",
                             icon: Icons.vpn_key,
                             errorText: "error",
                             isPassword: true),
-                        StyledInputText(
+                        AuthTextField(
                             hintText: "Phone Number",
                             icon: Icons.phone,
                             errorText: "error"),
-                        StyledInputText(
+                        AuthTextField(
                             hintText: "Address",
                             isAddress: true,
                             icon: Icons.house,
@@ -67,3 +68,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
