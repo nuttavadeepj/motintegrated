@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SpacialDeal extends StatelessWidget {
+class SpecialDeal extends StatelessWidget {
   final List<String> shopPictureList = [
     "https://cdn.pixabay.com/photo/2017/12/03/18/04/christmas-balls-2995437_960_720.jpg",
     "https://cdn.pixabay.com/photo/2017/12/13/00/23/christmas-3015776_960_720.jpg",
@@ -9,7 +9,7 @@ class SpacialDeal extends StatelessWidget {
     "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
   ];
 
-  final List<String> spacialDetailList = [
+  final List<String> specialDetailList = [
     "Get free 1 kg. vegetables from the organic farm.",
     "Get free 1 icecream from monthlyking shop.",
     "get discount 5% coupon at starduck coffee.",
@@ -17,7 +17,7 @@ class SpacialDeal extends StatelessWidget {
     "Get free 1 icecream from monthlyking shop."
   ];
 
-  final List<int> spacialPriceList = [
+  final List<int> specialPriceList = [
     50,
     20,
     50,
@@ -27,6 +27,10 @@ class SpacialDeal extends StatelessWidget {
 
   Widget build(BuildContext context) {
     double c_width = MediaQuery.of(context).size.width * 0.58;
+    int _currentIndex = 0;
+    int _currentIndex2 = 0;
+    int _currentIndex3 = 0;
+    
     void _showcontent() {
       showDialog(
         context: context, barrierDismissible: false, // user must tap button!
@@ -53,7 +57,7 @@ class SpacialDeal extends StatelessWidget {
         },
       );
     }
-
+    
     var box = Container(
       margin: const EdgeInsets.only(
         top: 30.0,
@@ -67,6 +71,7 @@ class SpacialDeal extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.0),
               child: Image.network(
                 'https://picsum.photos/250?image=9',
+                
               ),
             ),
             Container(
@@ -74,19 +79,23 @@ class SpacialDeal extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 15),
+                    padding: const EdgeInsets.only(top: 8, left: 15),
+                    
                     child: RichText(
                       textAlign: TextAlign.left,
                       text: TextSpan(
-                        text: 'Use 50 points\n',
+                        text: "Use ${specialPriceList[_currentIndex2++]} points\n",
                         style: TextStyle(
+                          fontFamily: 'Jost',
                             fontWeight: FontWeight.w600,
                             color: Colors.black,
                             fontSize: 28),
                         children: [
+                          
                           TextSpan(
+                            
                             text:
-                                'Get free 1 kg. vegetables from the organic farm.',
+                                "${specialDetailList[_currentIndex3++]}",
                             style: TextStyle(
                               fontFamily: 'Jost',
                               height: 1.1,
@@ -94,6 +103,7 @@ class SpacialDeal extends StatelessWidget {
                               fontWeight: FontWeight.normal,
                               color: Color(0xff000000),
                             ),
+                            
                           ),
                         ],
                       ),
@@ -146,7 +156,7 @@ class SpacialDeal extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 60, bottom: 15.0),
                     child: RichText(
                       text: TextSpan(
-                        text: 'Spacial Deal',
+                        text: 'Special Deal',
                         style: TextStyle(
                           fontSize: 35,
                           fontFamily: 'Jost',
@@ -159,7 +169,7 @@ class SpacialDeal extends StatelessWidget {
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      text: 'points\n',
+                      text: 'Point\n',
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.black,
@@ -195,9 +205,7 @@ class SpacialDeal extends StatelessWidget {
               child: Column(children: <Widget>[
                 box,
                 box,
-                box,
-                box,
-                box,
+                box                
               ]),
             ),
             // ),
