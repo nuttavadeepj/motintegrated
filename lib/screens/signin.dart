@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:motintegrated/widgets/authtextfield.dart';
-import 'package:motintegrated/widgets/authbutton.dart';
+import 'package:motintegrated/widgets/textfield.dart';
+import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/screens/home.dart';
 
 class SignIn extends StatefulWidget {
@@ -26,11 +26,11 @@ class _SignInState extends State<SignIn> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      StyledInputText(
+                      AuthTextField(
                           hintText: "Email",
                           icon: Icons.email,
                           errorText: "error"),
-                      StyledInputText(
+                      AuthTextField(
                           hintText: "Password",
                           icon: Icons.vpn_key,
                           errorText: "error",

@@ -1,3 +1,6 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 import 'package:motintegrated/widgets/textfield.dart';
@@ -17,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: NavigationDrawerWidget(),
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
           title: Text(
@@ -28,137 +32,165 @@ class _ProfilePageState extends State<ProfilePage> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
         ),
-        body: Center(
-          child: Container(
-              width: MediaQuery.of(context).size.width / 1.23,
-              child: SingleChildScrollView(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 90.0),
-                        child: Container(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            overflow: Overflow.visible,
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFE6E7C1),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                child: Column(children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 38.0),
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: 260,
-                                      child: Expanded(
-                                          child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Text(
-                                          'Nuttavadee Autsavapanakit',
+        body: Container(
+          child: Center(
+            child: Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                child: SingleChildScrollView(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 90.0),
+                          child: Container(
+                            child: Stack(
+                              alignment: Alignment.center,
+                              overflow: Overflow.visible,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFE6E7C1),
+                                       boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 5)],
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10))),
+                                  child: Column(children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 38.0),
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        width: 270,
+                                        child: Expanded(
+                                            child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Text(
+                                            'Nuttavadee Autsavapanakit',
+                                            style: TextStyle(
+                                                color: Color(0xFF323232),
+                                                fontSize: 20,
+                                                fontFamily: 'Jost',
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                          // ProfileTextField(
+                                          //     hintText: 'Nuttavadee Autsavapanakit',
+                                          //     errorText: 'Error')
+                                        )),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      icon: Icon(Icons.edit,
+                                          color: Colors.grey, size: 19),
+                                      padding: EdgeInsets.zero,
+                                      constraints: BoxConstraints(),
+                                      onPressed: () {
+                                        // openEdit();
+                                      },
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 7.0),
+                                      child: Text('Point',
                                           style: TextStyle(
-                                              color: Color(0xFF323232),
-                                              fontSize: 20,
+                                              color: Colors.black54,
+                                              fontSize: 16,
                                               fontFamily: 'Jost',
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        // ProfileTextField(
-                                        //     hintText: 'Nuttavadee Autsavapanakit',
-                                        //     errorText: 'Error')
-                                      )),
+                                              fontWeight: FontWeight.w500)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 2.0),
+                                      child: Text('0',
+                                          style: TextStyle(
+                                              height: 1,
+                                              color: Color(0xFF4A5F30),
+                                              fontSize: 56,
+                                              fontFamily: 'Jost',
+                                              fontWeight: FontWeight.w600)),
+                                    ),
+                                  ]),
+                                ),
+                                Positioned(
+                                  top: -110,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 25.0),
+                                    child: Container(
+                                      width: 115,
+                                      height: 115,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              color: Colors.white, width: 6),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image:
+                                                AssetImage("images/profile.jpg"),
+                                          )),
                                     ),
                                   ),
-                                  IconButton(
-                                    icon: Icon(Icons.edit,
-                                        color: Colors.grey, size: 20),
-                                    padding: EdgeInsets.zero,
-                                    constraints: BoxConstraints(),
-                                    onPressed: () {
-                                      // openEdit();
-                                    },
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Text('Point',
-                                        style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 17,
-                                            fontFamily: 'Jost',
-                                            fontWeight: FontWeight.w500)),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 4.0),
-                                    child: Text('0',
-                                        style: TextStyle(
-                                            height: 1,
-                                            color: Color(0xFF4A5F30),
-                                            fontSize: 56,
-                                            fontFamily: 'Jost',
-                                            fontWeight: FontWeight.w600)),
-                                  ),
-                                ]),
-                              ),
-                              Positioned(
-                                top: -110,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 25.0),
-                                  child: Container(
-                                    width: 115,
-                                    height: 115,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: Colors.white, width: 6),
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image:
-                                              AssetImage("images/profile.jpg"),
-                                        )),
-                                  ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Column(
-                        children: [
-                          Label(
-                            label: 'Email',
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15.0),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFEDEEC7),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Column(
+                                  children: [
+                                    Label(
+                                      label: 'Email',
+                                    ),
+                                    // ProfileTextField(
+                                    //     hintText: 'Email', errorText: 'Error'),
+                                    UserInfo(info: 'hello@gmail.com'),
+                                    Label(
+                                      label: 'Phone Number',
+                                    ),
+                                    // ProfileTextField(
+                                    //     hintText: 'Phone Number', errorText: 'Error'),
+                                    UserInfo(info: '0811234567'),
+                                    Label(
+                                      label: 'Address',
+                                    ),
+                                    // ProfileTextField(
+                                    //     hintText: 'Address',
+                                    //     errorText: 'Error',
+                                    //     isAddress: true),
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 20.0),
+                                      child: UserInfo(
+                                          info:
+                                              '123/456, soi sathupradit 11, sathupradit, banananana, banananaa bangkok 10120 '),
+                                    ),
+                                  
+                                  ],
+                                ),
+                              ),
+                              Button(
+                                    text: 'Save',
+                                    width: 130.0,
+                                    onPressed: () {
+                                      saveEdit();
+                                    })
+                            ],
                           ),
-                          ProfileTextField(
-                              hintText: 'Email', errorText: 'Error'),
-                          UserInfo(info: 'hello@gmail.com'),
-                          Label(
-                            label: 'Phone Number',
-                          ),
-                          // ProfileTextField(
-                          //     hintText: 'Phone Number', errorText: 'Error'),
-                          UserInfo(info: '0811234567'),
-                          Label(
-                            label: 'Address',
-                          ),
-                          // ProfileTextField(
-                          //     hintText: 'Address',
-                          //     errorText: 'Error',
-                          //     isAddress: true),
-                          UserInfo(
-                              info:
-                                  '123/456, soi sathupradit 11, sathupradit, banananana, banananaa bangkok 10120 '),
-                          Button(
-                              text: 'Save',
-                              width: 130.0,
-                              onPressed: () {
-                                saveEdit();
-                              })
-                        ],
-                      ),
-                    ]),
-              )),
-        ));
+                          
+                        ),
+                      ]),
+                )
+                ),
+          ),
+         decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/profilebg.png"),
+              fit: BoxFit.cover,
+            ),
+          ),)
+        );
   }
 }
 
@@ -170,7 +202,7 @@ class Label extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12.0),
+      padding: const EdgeInsets.only(top: 12.0, left: 15),
       child: Row(
         children: [
           Text(
@@ -198,10 +230,9 @@ class UserInfo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 1),
       child: Container(
-          width: MediaQuery.of(context).size.width / 1.23,
+          width: MediaQuery.of(context).size.width / 1.3,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              border: Border.all(color: Color(0xff4A5F30), width: 1.0),
               color: Colors.white),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 4.5, horizontal: 12),
