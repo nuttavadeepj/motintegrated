@@ -58,7 +58,6 @@ class SpecialDeal extends StatelessWidget {
       );
     }
 
-    
     double detail = MediaQuery.of(context).size.width * 0.9;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -554,6 +553,7 @@ class SpecialDeal extends StatelessWidget {
                     ),
                   ),
                 ),
+                Padding(padding: const EdgeInsets.only(top: 30,),)
               ]),
             ),
             // ),
