@@ -12,7 +12,7 @@ class SpecialDeal extends StatelessWidget {
   final List<String> specialDetailList = [
     "Get free 1 kg. vegetables from the organic farm.",
     "Get free 1 icecream from monthlyking shop.",
-    "get discount 5% coupon at starduck coffee.",
+    "get discount 5% coupon at starbuck coffee.",
     "Get free 50 g. cosmos seeds from the Cosmos garden.",
     "Get free a siphon coffee maker with 150 g. coffee beans."
   ];
@@ -115,7 +115,7 @@ class SpecialDeal extends StatelessWidget {
 
         Expanded(
           child: Container(
-            padding: const EdgeInsets.only(left: 20, right: 20.0),
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: SingleChildScrollView(
               child: Column(children: <Widget>[
                 Container(
