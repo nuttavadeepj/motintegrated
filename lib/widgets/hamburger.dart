@@ -5,6 +5,7 @@ import 'package:motintegrated/screens/aboutus.dart';
 import 'package:motintegrated/screens/shop.dart';
 import 'package:motintegrated/screens/profile.dart';
 import 'package:motintegrated/screens/track.dart';
+import 'package:motintegrated/screens/specialdeal.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -26,7 +27,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                 )),
               ),
             ),
-            const SizedBox(height: 1),
+            SizedBox(height: 1),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.home,
                     size: 21, color: Color(0xff323232)),
@@ -61,7 +62,10 @@ class NavigationDrawerWidget extends StatelessWidget {
                 FaIcon(FontAwesomeIcons.ticketAlt,
                     size: 21, color: Color(0xff323232)),
                 'Deal',
-                () => {}),
+                () => { Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SpecialDeal()),
+                      ),}),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.truck,
                     size: 21, color: Color(0xff323232)),
@@ -77,10 +81,11 @@ class NavigationDrawerWidget extends StatelessWidget {
                 FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xff323232)),
                 'Signout',
                 () => {}),
+                SizedBox(height: 38),
             Profile(
                 AssetImage("images/profile.jpg"),
                 'Porjuu',
-                'helloporjuuuu@gmail.com',
+                'hellop@gmail.com',
                 () => {
                       Navigator.push(
                         context,

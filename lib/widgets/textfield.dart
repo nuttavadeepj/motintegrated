@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ProfileTextField extends StatelessWidget {
-  final hintText;
+  final initialValue;
   final isPassword;
   final isAddress;
   final errorText;
 
   ProfileTextField(
-      {@required this.hintText,
+      {@required this.initialValue,
       this.isPassword = false,
       this.isAddress = false,
       @required this.errorText});
@@ -22,10 +22,14 @@ class ProfileTextField extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 1.3,
             child: TextFormField(
               maxLines: isAddress ? 3 : 1,
+              initialValue: initialValue,
+              // textInputAction: TextInputAction.done,
+              // onFieldSubmitted: (value) {
+              //       setState(() => {isEdit = false, title = value});
+              //     },
               obscureText: isPassword,
               style: TextStyle(fontSize: 19, fontFamily: 'Jost'),
               decoration: InputDecoration(
-                hintText: hintText,
                 fillColor: Colors.white,
                 filled: true,
                 suffixIcon: IconButton(
@@ -45,7 +49,7 @@ class ProfileTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 isDense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 12),
+                contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 1),
               ),
 
               // validator: (value) {

@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 import 'package:motintegrated/widgets/textfield.dart';
@@ -12,6 +9,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  bool isEdit = false;
+
   void saveEdit() {
     print('save');
   }
@@ -51,9 +50,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
                                       color: Color(0xFFE6E7C1),
-                                       boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 5)],
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10))),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black26,
+                                            blurRadius: 5)
+                                      ],
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10))),
                                   child: Column(children: [
                                     Padding(
                                       padding: const EdgeInsets.only(top: 38.0),
@@ -63,17 +66,18 @@ class _ProfilePageState extends State<ProfilePage> {
                                         child: Expanded(
                                             child: SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
-                                          child: Text(
+                                          child: !isEdit ? 
+                                          Text(
                                             'Nuttavadee Autsavapanakit',
                                             style: TextStyle(
                                                 color: Color(0xFF323232),
                                                 fontSize: 20,
                                                 fontFamily: 'Jost',
                                                 fontWeight: FontWeight.w600),
-                                          ),
-                                          // ProfileTextField(
-                                          //     hintText: 'Nuttavadee Autsavapanakit',
-                                          //     errorText: 'Error')
+                                          ) :
+                                          ProfileTextField(
+                                              initialValue: 'Nuttavadee Autsavapanakit',
+                                              errorText: 'Error')
                                         )),
                                       ),
                                     ),
@@ -83,7 +87,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                       padding: EdgeInsets.zero,
                                       constraints: BoxConstraints(),
                                       onPressed: () {
-                                        // openEdit();
+                                        setState(() {
+                                          isEdit = true;
+                                        });
                                       },
                                     ),
                                     Padding(
@@ -96,7 +102,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                               fontWeight: FontWeight.w500)),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 2.0),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 2.0),
                                       child: Text('0',
                                           style: TextStyle(
                                               height: 1,
@@ -120,8 +127,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                               color: Colors.white, width: 6),
                                           image: DecorationImage(
                                             fit: BoxFit.cover,
-                                            image:
-                                                AssetImage("images/profile.jpg"),
+                                            image: AssetImage(
+                                                "images/profile.jpg"),
                                           )),
                                     ),
                                   ),
@@ -161,36 +168,34 @@ class _ProfilePageState extends State<ProfilePage> {
                                     //     errorText: 'Error',
                                     //     isAddress: true),
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 20.0),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 20.0),
                                       child: UserInfo(
                                           info:
                                               '123/456, soi sathupradit 11, sathupradit, banananana, banananaa bangkok 10120 '),
                                     ),
-                                  
                                   ],
                                 ),
                               ),
                               Button(
-                                    text: 'Save',
-                                    width: 130.0,
-                                    onPressed: () {
-                                      saveEdit();
-                                    })
+                                  text: 'Save',
+                                  width: 130.0,
+                                  onPressed: () {
+                                    saveEdit();
+                                  })
                             ],
                           ),
-                          
                         ),
                       ]),
-                )
-                ),
+                )),
           ),
-         decoration: BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("images/profilebg.png"),
               fit: BoxFit.cover,
             ),
-          ),)
-        );
+          ),
+        ));
   }
 }
 
