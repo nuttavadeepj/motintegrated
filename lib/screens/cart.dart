@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-
+import 'package:motintegrated/screens/checkout.dart';
+import 'package:motintegrated/screens/shop.dart';
 class Cart extends StatelessWidget {
   // Shopping List
   final List<String> shopPictureList = [
@@ -33,21 +34,29 @@ class Cart extends StatelessWidget {
     int _currentIndex2 = 0;
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'My Cart',
+            style: TextStyle(
+                color: Color(0xFF323232),
+                fontSize: 35,
+                fontFamily: 'Jost',
+                fontWeight: FontWeight.w600),
+          ),
+          iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Color(0xff4A5F30)),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         body: SingleChildScrollView(
           child: Container(
             child: Column(children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 60,
-                ),
-              ),
-              Text(
-                'My Cart',
-                style: TextStyle(
-                    fontSize: 35,
-                    fontFamily: 'Jost',
-                    fontWeight: FontWeight.w600),
-              ),
               Padding(
                 padding: const EdgeInsets.only(
                   top: 20,
@@ -58,16 +67,18 @@ class Cart extends StatelessWidget {
                 // autoPlayAnimationDuration: new Duration(seconds: 3),
                 items: shopPictureList.map(
                   (url) {
-                    var image = Image.network(
-                      url,
+                    var image = ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.network(
+                        url,
 
-                      fit: BoxFit.fill,
-
-                      // width: 1000,
-                      // height: double.infinity,
+                        fit: BoxFit.fill,
+                        // width: 1000,
+                        // height: double.infinity,
+                      ),
                     );
                     var item = Text(
-                      "${shopNameTagList[_currentIndex++]}",
+                      "  ${shopNameTagList[_currentIndex++]}",
                       style: TextStyle(
                           color: Color(0xff9D8671),
                           fontFamily: 'Jost',
@@ -75,15 +86,39 @@ class Cart extends StatelessWidget {
                           fontSize: 28),
                     );
                     var price = Text(
-                      "${shopPriceList[_currentIndex2++]} ฿",
+                      "   ${shopPriceList[_currentIndex2++]} ฿",
                       style: TextStyle(
                           color: Color(0xff000000),
                           fontFamily: 'Jost',
                           fontWeight: FontWeight.normal,
                           fontSize: 20),
                     );
+                    var delete = TextButton(
+                      style: TextButton.styleFrom(
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'DELETE',
+                        style: TextStyle(
+                          color: Color(0xffFF0000),
+                          fontFamily: 'Jost',
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    );
                     return Scaffold(
                       body: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(color: Colors.black, blurRadius: 0.5)
+                          ],
+                          borderRadius: BorderRadius.circular(15.0),
+                          color: Color(0xffE6E7C1),
+                        ),
                         // children: [
                         //   Container(
                         margin: EdgeInsets.all(8.0),
@@ -93,6 +128,7 @@ class Cart extends StatelessWidget {
                           //   Radius.circular(15.0),
                           // ),
                           crossAxisAlignment: CrossAxisAlignment.stretch,
+
                           // child: image,
                           // child: Column(
                           children: <Widget>[
@@ -102,13 +138,15 @@ class Cart extends StatelessWidget {
                             Container(
                               child: item,
                             ),
-                            Container(
-                              child: price,
+                            Row(
+                              children: [price, 
+                              
+                              delete],
                             )
                           ],
                         ),
-                        height: 20000.0,
-                        color: Colors.amber,
+
+                        height: 90000.0,
                       ),
                     );
                   },
@@ -295,14 +333,15 @@ class Cart extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 40, left: 30, right: 30, bottom: 20),
+                padding: const EdgeInsets.only(
+                    top: 40, left: 30, right: 30, bottom: 20),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                (Cart()))); //Don't forget to change Navigator location of button
+                                (CheckOut()))); //Don't forget to change Navigator location of button
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Color(0xFF4A5F30),
