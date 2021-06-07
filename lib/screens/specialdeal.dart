@@ -31,32 +31,33 @@ class SpecialDeal extends StatelessWidget {
     int _currentIndex2 = 0;
     int _currentIndex3 = 0;
 
-    void _showcontent() {
-      showDialog(
-        context: context, barrierDismissible: false, // user must tap button!
-
-        builder: (BuildContext context) {
-          return new AlertDialog(
-            title: new Text('You clicked on'),
-            content: new SingleChildScrollView(
-              child: new ListBody(
-                children: [
-                  new Text('This is a Dialog Box. Click OK to Close.'),
-                ],
+    void checkOutOrder() {
+    showDialog(
+        context: context,
+        builder: (cpntext) => AlertDialog(
+              title: Center(child: Text('Exchange', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500))),
+              content: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Text(
+                  'Are you sure you want to exchange this product? After confirming, the point in account will be paid off.',
+                  
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            actions: [
-              new FlatButton(
-                child: new Text('Ok'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
+              actions: [
+                FlatButton(
+                  textColor: Colors.black,
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('CANCEL', style: TextStyle(color: Colors.black54, fontSize: 16)),
+                ),
+                FlatButton(
+                  textColor: Colors.black,
+                  onPressed: () {},
+                  child: Text('ACCEPT', style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
+                ),
+              ],
+            ));
+  }
 
     double detail = MediaQuery.of(context).size.width * 0.9;
     return Column(
@@ -170,7 +171,7 @@ class SpecialDeal extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: _showcontent,
+                                onPressed: checkOutOrder,
                                 child:
                                     // crossAxisAlignment: CrossAxisAlignment.end,
                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -257,7 +258,7 @@ class SpecialDeal extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: _showcontent,
+                                onPressed: checkOutOrder,
                                 child:
                                     // crossAxisAlignment: CrossAxisAlignment.end,
                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -344,7 +345,7 @@ class SpecialDeal extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: _showcontent,
+                                onPressed: checkOutOrder,
                                 child:
                                     // crossAxisAlignment: CrossAxisAlignment.end,
                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -431,7 +432,7 @@ class SpecialDeal extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: _showcontent,
+                                onPressed: checkOutOrder,
                                 child:
                                     // crossAxisAlignment: CrossAxisAlignment.end,
                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -518,7 +519,7 @@ class SpecialDeal extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: _showcontent,
+                                onPressed: checkOutOrder,
                                 child:
                                     // crossAxisAlignment: CrossAxisAlignment.end,
                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
