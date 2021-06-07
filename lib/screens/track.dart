@@ -17,6 +17,7 @@ class _TrackPageState extends State<TrackPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavigationDrawerWidget(),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -39,8 +40,8 @@ class _TrackPageState extends State<TrackPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "result of scan",
-                      style: TextStyle(fontSize: 25),
+                      "My trash bag",
+                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
                       height: 20,
@@ -153,12 +154,26 @@ class _TrackPageState extends State<TrackPage> {
     ];
     var n = Random().nextInt(item.length);
     setState(() {
-      scanresult.add(Container(
-          child: Column(children: [
-        Text("Id: ${item[n]["id"]}"),
-        Text("Name: ${item[n]["name"]}"),
-        Text("Scan date :${DateFormat('yyyy-MM-dd').format(DateTime.now())}")
-      ])));
+      scanresult.add(Container( decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            
+            border: Border.all(
+                    color: Color(0xFFE6E7C1),
+                    width: 2,
+                  )
+
+            
+            ),
+          
+      width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start ,children: [
+        Text("Name: ${item[n]["name"]}", style: TextStyle(fontSize: 16),),
+        Text("ID: ${item[n]["id"]}", style: TextStyle(fontSize: 16)),
+        Text("Scan Date: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}", style: TextStyle(fontSize: 16))
+      ]),
+          )));
     });
   }
 }
