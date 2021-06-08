@@ -1,7 +1,10 @@
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:motintegrated/models/user_model.dart';
 import 'package:motintegrated/widgets/textfield.dart';
 import 'package:motintegrated/widgets/button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:motintegrated/screens/home.dart';
 
 class SignUp extends StatefulWidget {
@@ -10,6 +13,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _emailController = TextEditingController();
+
+  final _nameController = TextEditingController();
+
+  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _addressController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -28,27 +39,28 @@ class _SignUpState extends State<SignUp> {
                     child: Column(
                       children: [
                         AuthTextField(
-                            hintText: "Name",
-                            icon: Icons.account_circle,
-                            errorText: "error"),
+                            controller: _nameController,
+                            hintText: 'Name',
+                            icon: Icons.account_circle),
                         AuthTextField(
-                            hintText: "Email",
-                            icon: Icons.email,
-                            errorText: "error"),
+                            controller: _emailController,
+                            hintText: 'Email',
+                            icon: Icons.email),
                         AuthTextField(
-                            hintText: "Password",
-                            icon: Icons.vpn_key,
-                            errorText: "error",
-                            isPassword: true),
+                          controller: _passwordController,
+                          hintText: 'Password',
+                          icon: Icons.vpn_key,
+                          isPassword: true,
+                        ),
                         AuthTextField(
+                            controller: _phoneController,
                             hintText: "Phone Number",
-                            icon: Icons.phone,
-                            errorText: "error"),
+                            icon: Icons.phone),
                         AuthTextField(
+                            controller: _addressController,
                             hintText: "Address",
                             isAddress: true,
-                            icon: Icons.house,
-                            errorText: "error"),
+                            icon: Icons.house),
                       ],
                     ),
                   )),
@@ -57,8 +69,9 @@ class _SignUpState extends State<SignUp> {
                 child: AuthButton(
                     text: 'Sign Up',
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => (Home())));
+                      if (_formKey.currentState!.validate()) {
+                        signup();
+                      }
                     }),
               )
             ],
@@ -67,5 +80,37 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
-}
 
+  Future<void> signup() async {
+    final email = _emailController.text;
+    final name = _nameController.text;
+    final password = _passwordController.text;
+    final phone = _phoneController.text;
+    final address = _addressController.text;
+
+    await Firebase.initializeApp().then((value) async {
+      print('signup by $email, password: $password, name: $name');
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) async {
+        await value.user!.updateDisplayName(name).then((value2) async {
+          String uid = value.user!.uid;
+          print('this is usereid $uid');
+          UserModel model = UserModel(
+              address: address, email: email, name: name, phone: phone);
+          Map<String, dynamic> data = model.toMap();
+          await FirebaseFirestore.instance
+              .collection('user')
+              .doc(uid)
+              .set(data)
+              .then((value) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          });
+        });
+      });
+    });
+  }
+}

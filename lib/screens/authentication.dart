@@ -16,7 +16,7 @@ class _AuthenState extends State<Authen> {
       resizeToAvoidBottomInset: false,
         backgroundColor: Color(0xFFF8F8ED),
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(260),
+          preferredSize: Size.fromHeight(280),
           child: Padding(
             padding: const EdgeInsets.only(top: 100),
             child: new AppBar(

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/textfield.dart';
 import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -9,6 +11,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -27,13 +31,13 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     children: [
                       AuthTextField(
-                          hintText: "Email",
+                          controller: _emailController,
                           icon: Icons.email,
-                          errorText: "error"),
+                          hintText: 'Email'),
                       AuthTextField(
-                          hintText: "Password",
+                          controller: _passwordController,
+                          hintText: 'Password',
                           icon: Icons.vpn_key,
-                          errorText: "error",
                           isPassword: true),
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
@@ -60,12 +64,29 @@ class _SignInState extends State<SignIn> {
             AuthButton(
                 text: 'Sign In',
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => (Home())));
+                  if (_formKey.currentState!.validate()) {
+                    signin();
+                  }
                 })
           ],
         ),
       ),
     );
+  }
+
+  Future<void> signin() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+    await Firebase.initializeApp().then((value) async {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Home()),
+        );
+      });
+    });
+    
   }
 }

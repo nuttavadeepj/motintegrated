@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "938944085287",
+    "project_id": "motproject-12377",
+    "storage_bucket": "motproject-12377.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938944085287:android:509309a3741bf0b59ebd02",
+        "android_client_info": {
+          "package_name": "com.example.motintegrated"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938944085287-qj649kbf1ptbvglukhnvvpln968enk14.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwmdUs396RI94u4RV7d6ZLbxiCBrNg54s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938944085287-qj649kbf1ptbvglukhnvvpln968enk14.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
