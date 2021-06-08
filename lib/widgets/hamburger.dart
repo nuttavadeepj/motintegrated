@@ -6,6 +6,9 @@ import 'package:motintegrated/screens/shop.dart';
 import 'package:motintegrated/screens/profile.dart';
 import 'package:motintegrated/screens/track.dart';
 import 'package:motintegrated/screens/specialdeal.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:motintegrated/screens/authentication.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -62,10 +65,12 @@ class NavigationDrawerWidget extends StatelessWidget {
                 FaIcon(FontAwesomeIcons.ticketAlt,
                     size: 21, color: Color(0xff323232)),
                 'Deal',
-                () => { Navigator.push(
+                () => {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SpecialDeal()),
-                      ),}),
+                      ),
+                    }),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.truck,
                     size: 21, color: Color(0xff323232)),
@@ -79,9 +84,17 @@ class NavigationDrawerWidget extends StatelessWidget {
             Divider(color: Color(0xff4A5F30)),
             CustomListTile(
                 FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xff323232)),
-                'Signout',
-                () => {}),
-                SizedBox(height: 38),
+                'Signout', () async {
+              await Firebase.initializeApp().then((value) async {
+                await FirebaseAuth.instance.signOut().then((value) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Authen()),
+                  );
+                });
+              });
+            }),
+            SizedBox(height: 110),
             Profile(
                 AssetImage("images/profile.jpg"),
                 'Porjuu',
@@ -117,7 +130,9 @@ class Profile extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                 color: Color(0xffDCDDA6),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20)),
               ),
               child: Row(
                 children: [

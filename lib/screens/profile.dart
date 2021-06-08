@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
-import 'package:motintegrated/widgets/textfield.dart';
 import 'package:motintegrated/widgets/button.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -9,12 +8,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool isEdit = false;
-
-  void saveEdit() {
-    print('save');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,20 +58,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                         width: 270,
                                         child: Expanded(
                                             child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: !isEdit ? 
-                                          Text(
-                                            'Nuttavadee Autsavapanakit',
-                                            style: TextStyle(
-                                                color: Color(0xFF323232),
-                                                fontSize: 20,
-                                                fontFamily: 'Jost',
-                                                fontWeight: FontWeight.w600),
-                                          ) :
-                                          ProfileTextField(
-                                              initialValue: 'Nuttavadee Autsavapanakit',
-                                              errorText: 'Error')
-                                        )),
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                child: Text(
+                                                  'Nuttavadee Autsavapanakit',
+                                                  style: TextStyle(
+                                                      color: Color(0xFF323232),
+                                                      fontSize: 20,
+                                                      fontFamily: 'Jost',
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ))),
                                       ),
                                     ),
                                     IconButton(
@@ -86,11 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           color: Colors.grey, size: 19),
                                       padding: EdgeInsets.zero,
                                       constraints: BoxConstraints(),
-                                      onPressed: () {
-                                        setState(() {
-                                          isEdit = true;
-                                        });
-                                      },
+                                      onPressed: () {},
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 7.0),
@@ -151,22 +137,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Label(
                                       label: 'Email',
                                     ),
-                                    // ProfileTextField(
-                                    //     hintText: 'Email', errorText: 'Error'),
                                     UserInfo(info: 'hello@gmail.com'),
                                     Label(
                                       label: 'Phone Number',
                                     ),
-                                    // ProfileTextField(
-                                    //     hintText: 'Phone Number', errorText: 'Error'),
                                     UserInfo(info: '0811234567'),
                                     Label(
                                       label: 'Address',
                                     ),
-                                    // ProfileTextField(
-                                    //     hintText: 'Address',
-                                    //     errorText: 'Error',
-                                    //     isAddress: true),
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 20.0),
@@ -178,11 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                               Button(
-                                  text: 'Save',
-                                  width: 130.0,
-                                  onPressed: () {
-                                    saveEdit();
-                                  })
+                                  text: 'Save', width: 130.0, onPressed: () {})
                             ],
                           ),
                         ),

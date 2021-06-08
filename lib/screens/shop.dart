@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:motintegrated/screens/allgas.dart';
 import 'package:motintegrated/screens/product.dart';
 import 'package:motintegrated/screens/allbag.dart';
-import 'package:motintegrated/screens/allgas.dart';
 import 'package:motintegrated/screens/home.dart';
 
 class ShopPage extends StatefulWidget {

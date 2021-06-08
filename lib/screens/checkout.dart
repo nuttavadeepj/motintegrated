@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/textfield.dart';
 import 'package:motintegrated/widgets/button.dart';
-import 'package:motintegrated/screens/profile.dart';
 
 class CheckOut extends StatefulWidget {
   @override

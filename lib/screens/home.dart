@@ -8,6 +8,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
