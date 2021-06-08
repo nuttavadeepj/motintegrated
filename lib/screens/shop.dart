@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/screens/allgas.dart';
+import 'package:motintegrated/screens/cart.dart';
 import 'package:motintegrated/screens/product.dart';
 import 'package:motintegrated/screens/allbag.dart';
 import 'package:motintegrated/screens/home.dart';
@@ -42,7 +43,12 @@ class _ShopPageState extends State<ShopPage>
               icon: Icon(Icons.shopping_basket),
               iconSize: 30.0,
               color: Color(0xff4A5F30),
-              onPressed: () {})
+              onPressed: () => {
+                Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Cart()),
+            )
+              })
         ],
       ),
       body: ListView(
