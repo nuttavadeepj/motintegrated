@@ -10,8 +10,31 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:motintegrated/screens/authentication.dart';
 
-class NavigationDrawerWidget extends StatelessWidget {
+class NavigationDrawerWidget extends StatefulWidget {
+  @override
+  State<NavigationDrawerWidget> createState() => _NavigationDrawerWidgetState();
+}
+
+class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   final padding = EdgeInsets.symmetric(horizontal: 20);
+  String name = '';
+  String email = '';
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = await auth.currentUser!;
+    setState(() {
+      name = user.displayName!;
+      email = user.email!;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -97,8 +120,8 @@ class NavigationDrawerWidget extends StatelessWidget {
             SizedBox(height: 110),
             Profile(
                 AssetImage("images/profile.jpg"),
-                'Porjuu',
-                'hellop@gmail.com',
+                '$name',
+                '$email',
                 () => {
                       Navigator.push(
                         context,

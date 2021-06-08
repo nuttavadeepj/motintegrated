@@ -1,6 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
-import 'package:motintegrated/widgets/button.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -8,6 +8,24 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  String name = '';
+  String email = '';
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = await auth.currentUser!;
+    setState(() {
+      name = user.displayName!;
+      email = user.email!;
+    });
+    print('login by $name');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 scrollDirection:
                                                     Axis.horizontal,
                                                 child: Text(
-                                                  'Nuttavadee Autsavapanakit',
+                                                  '$name',
                                                   style: TextStyle(
                                                       color: Color(0xFF323232),
                                                       fontSize: 20,
@@ -137,7 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Label(
                                       label: 'Email',
                                     ),
-                                    UserInfo(info: 'hello@gmail.com'),
+                                    UserInfo(info: '$email'),
                                     Label(
                                       label: 'Phone Number',
                                     ),
@@ -155,8 +173,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ),
-                              Button(
-                                  text: 'Save', width: 130.0, onPressed: () {})
+                              SizedBox(height: 130)
+                              // Button(
+                              //     text: 'Save', width: 130.0, onPressed: () {})
                             ],
                           ),
                         ),
