@@ -28,7 +28,7 @@ class _ShopPageState extends State<ShopPage>
         elevation: 0.0,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Color(0xff4A5F30)),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xFF323232)),
           onPressed: () => {
             Navigator.push(
               context,
@@ -37,12 +37,13 @@ class _ShopPageState extends State<ShopPage>
           },
         ),
         title: Text('Pickup',
-            style: TextStyle(fontSize: 25.0, color: Color(0xff4A5F30))),
+            style: TextStyle(
+                color: Color(0xFF323232), fontSize: 25, fontFamily: 'Jost')),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.shopping_basket),
               iconSize: 30.0,
-              color: Color(0xff4A5F30),
+              color: Color(0xFF323232),
               onPressed: () => {
                 Navigator.push(
               context,
@@ -59,7 +60,7 @@ class _ShopPageState extends State<ShopPage>
             padding: const EdgeInsets.only(left: 20.0),
             child: Text(
               'Categories',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Jost'),
             ),
           ),
           SizedBox(height: 15.0),
@@ -76,19 +77,19 @@ class _ShopPageState extends State<ShopPage>
                 Tab(
                   child: Text(
                     'All',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 22, fontFamily: 'Jost'),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'Trash Bag',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 22, fontFamily: 'Jost'),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'Gas',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 22, fontFamily: 'Jost'),
                   ),
                 ),
               ],
@@ -102,7 +103,7 @@ class _ShopPageState extends State<ShopPage>
               children: [
                 Product(),
                 AllBag(),
-                AllGas(),
+                AllGas()
               ],
             ),
           )

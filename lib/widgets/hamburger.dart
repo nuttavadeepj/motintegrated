@@ -181,11 +181,11 @@ class Profile extends StatelessWidget {
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 8),
+                                  padding: const EdgeInsets.only(top: 15),
                                   child: Text(
                                     name,
                                     style: TextStyle(
-                                        fontSize: 20, color: Color(0xff4A5F30)),
+                                        fontSize: 18, color: Color(0xff4A5F30)),
                                   ),
                                 ),
                               ),
@@ -200,7 +200,7 @@ class Profile extends StatelessWidget {
                                 child: Text(
                                   email,
                                   style: TextStyle(
-                                      fontSize: 20, color: Color(0xff4A5F30)),
+                                      fontSize: 18, color: Color(0xff4A5F30)),
                                 ),
                               ),
                             ),

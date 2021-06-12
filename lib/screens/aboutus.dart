@@ -17,7 +17,7 @@ class AboutUs extends StatelessWidget {
         ),
         body: new Container(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.only(top: 250, left: 30),
+            padding: const EdgeInsets.only(top: 300, left: 20),
             child: Row(
               children: [
                 Column(
@@ -43,6 +43,7 @@ class AboutUs extends StatelessWidget {
                                     fontFamily: 'Jost',
                                     height: 1.3),
                                 textAlign: TextAlign.justify,
+                                
                               ),
                             ),
                             RichText(
@@ -56,7 +57,7 @@ class AboutUs extends StatelessWidget {
                                   children: [
                                     TextSpan(
                                         text:
-                                            ' is a service that encourages you to separate waste. You just use our trash bags and we will buy a compostable waste from you. You send us the waste then we will have many special deals for you :)',
+                                            ' is a service that encourages you to separate waste. You just use our trash bags and we will receive a compostable waste from you. You send us the waste then we will have many special deals for you :)',
                                         style: TextStyle(
                                           fontFamily: 'Jost',
                                           height: 1.3,

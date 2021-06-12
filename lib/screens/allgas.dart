@@ -67,19 +67,19 @@ class AllGas extends StatelessWidget {
                   child: Hero(
                     tag: imgPath,
                     child: Container(
-                        height: 150.0,
-                        width: 150.0,
+                        height: 140.0,
+                        width: 140.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(imgPath),
                                 fit: BoxFit.contain))),
                   ),
                 ),
-                SizedBox(height: 7.0),
+                SizedBox(height: 2.0),
                 Text(price,
-                    style: TextStyle(color: Color(0xff9D8671), fontSize: 26.0, fontWeight: FontWeight.w500)),
+                    style: TextStyle(color: Color(0xff9D8671), fontSize: 25.0, fontWeight: FontWeight.w500, fontFamily: 'Jost')),
                 Text(name,
-                    style: TextStyle(color: Color(0xff323232), fontSize: 20.0)),
+                    style: TextStyle(color: Color(0xff323232), fontSize: 18.0, fontFamily: 'Jost')),
                 
               ],
             ),

@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0.0,
       ),
       body: Container(

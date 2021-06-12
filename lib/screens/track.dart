@@ -21,7 +21,7 @@ class _TrackPageState extends State<TrackPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'TrackPage',
+          'Tracking',
           style: TextStyle(
               color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
         ),
@@ -41,7 +41,7 @@ class _TrackPageState extends State<TrackPage> {
                   children: [
                     Text(
                       "My trash bag",
-                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500, fontFamily: 'Jost'),
                     ),
                     SizedBox(
                       height: 20,

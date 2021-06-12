@@ -36,10 +36,10 @@ class Welcome extends StatelessWidget {
                       child: Container(
                           width: MediaQuery.of(context).size.width / 1.17,
                           child: Text(
-                              'Would it be better if the garbage you left every day can create benefits for you. We will change your food waste into biogas! It is not just you give a garbage  for us, but in MOT you will get reward points to redeem items in special deal.',
+                              'Food waste is valuable, biodegradable waste can be exploited. We take garbage from you. You receive special deals from us.',
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                  fontSize: 13.5,
+                                  fontSize: 15,
                                   fontFamily: 'Jost',
                                   color: Color(0xff545454),
                                   height: 1.1,
