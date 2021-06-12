@@ -12,6 +12,7 @@ class Welcome extends StatelessWidget {
             padding: const EdgeInsets.only(left: 30),
             child: Row(
               children: [
+                SingleChildScrollView(child: 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -71,7 +72,7 @@ class Welcome extends StatelessWidget {
                                 fontWeight: FontWeight.w600),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
+                            padding: const EdgeInsets.only(left: 10.0,),
                             child: Icon(
                               Icons.arrow_forward,
                               size: 30,
@@ -79,8 +80,10 @@ class Welcome extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
+                    Padding(padding: const EdgeInsets.only(bottom: 15.0,),),
                   ],
+                ),
                 )
               ],
             ),
