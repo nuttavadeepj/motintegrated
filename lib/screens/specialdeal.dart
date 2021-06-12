@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motintegrated/widgets/hamburger.dart';
 
 class SpecialDeal extends StatelessWidget {
   final List<String> shopPictureList = [
@@ -32,541 +33,565 @@ class SpecialDeal extends StatelessWidget {
     int _currentIndex3 = 0;
 
     void checkOutOrder() {
-    showDialog(
-        context: context,
-        builder: (cpntext) => AlertDialog(
-              title: Center(child: Text('Exchange', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500))),
-              content: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Text(
-                  'Are you sure you want to exchange this product? After confirming, the point in account will be paid off.',
-                  
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              actions: [
-                FlatButton(
-                  textColor: Colors.black,
-                  onPressed: () => Navigator.pop(context),
-                  child: Text('CANCEL', style: TextStyle(color: Colors.black54, fontSize: 16)),
-                ),
-                FlatButton(
-                  textColor: Colors.black,
-                  onPressed: () {},
-                  child: Text('ACCEPT', style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
-                ),
-              ],
-            ));
-  }
-
-    double detail = MediaQuery.of(context).size.width * 0.9;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Container(
-          child: Container(
-              width: detail,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60, bottom: 15.0),
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Special Deal',
+      showDialog(
+          context: context,
+          builder: (cpntext) => AlertDialog(
+                title: Center(
+                    child: Text('Exchange',
                         style: TextStyle(
-                          fontSize: 35,
-                          fontFamily: 'Jost',
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff323232),
-                        ),
-                      ),
-                    ),
-                  ),
-                  RichText(
+                            fontSize: 25, fontWeight: FontWeight.w500))),
+                content: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    'Are you sure you want to exchange this product? After confirming, the point in account will be paid off.',
                     textAlign: TextAlign.center,
-                    text: TextSpan(
-                      text: 'Point\n',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                          fontSize: 16),
-                      children: [
-                        TextSpan(
-                          text: '0',
-                          style: TextStyle(
-                            fontFamily: 'Jost',
-                            height: 1.1,
-                            fontSize: 65,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff4A5F30),
-                          ),
-                        ),
-                      ],
-                    ),
+                  ),
+                ),
+                actions: [
+                  FlatButton(
+                    textColor: Colors.black,
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('CANCEL',
+                        style: TextStyle(color: Colors.black54, fontSize: 16)),
+                  ),
+                  FlatButton(
+                    textColor: Colors.black,
+                    onPressed: () {},
+                    child: Text('ACCEPT',
+                        style:
+                            TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
                   ),
                 ],
-              ),
-              color: Color(0xffE6E7C1)),
-        ),
-        // SingleChildScrollView(
-        //   child:
-        // SingleChildScrollView(
-        //   child: Container(
-        //     child:
+              ));
+    }
 
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-            child: SingleChildScrollView(
-              child: Column(children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 30.0,
-                  ),
-                  height: 130,
-                  color: Color(0xffFFFBF2),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            '${shopPictureList[_currentIndex++]}',
-                            width: 130,
-                            height: 130,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: c_width,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, left: 15),
-                                child: RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(
-                                    text:
-                                        "Use ${specialPriceList[_currentIndex2++]} points\n",
-                                    style: TextStyle(
-                                        fontFamily: 'Jost',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 28),
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            "${specialDetailList[_currentIndex3++]}",
-                                        style: TextStyle(
-                                          fontFamily: 'Jost',
-                                          height: 1.1,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: checkOutOrder,
-                                child:
-                                    // crossAxisAlignment: CrossAxisAlignment.end,
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                    Container(
-                                  width: c_width,
-                                  child: Text(
-                                    'Exchange',
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      color: Color(0xff4A5F30),
-                                      fontFamily: 'Jost',
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 3)
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 30.0,
-                  ),
-                  height: 130,
-                  color: Color(0xffFFFBF2),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            '${shopPictureList[_currentIndex++]}',
-                            width: 130,
-                            height: 130,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: c_width,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, left: 15),
-                                child: RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(
-                                    text:
-                                        "Use ${specialPriceList[_currentIndex2++]} points\n",
-                                    style: TextStyle(
-                                        fontFamily: 'Jost',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 28),
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            "${specialDetailList[_currentIndex3++]}",
-                                        style: TextStyle(
-                                          fontFamily: 'Jost',
-                                          height: 1.1,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: checkOutOrder,
-                                child:
-                                    // crossAxisAlignment: CrossAxisAlignment.end,
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                    Container(
-                                  width: c_width,
-                                  child: Text(
-                                    'Exchange',
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      color: Color(0xff4A5F30),
-                                      fontFamily: 'Jost',
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 3)
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 30.0,
-                  ),
-                  height: 130,
-                  color: Color(0xffFFFBF2),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            '${shopPictureList[_currentIndex++]}',
-                            width: 130,
-                            height: 130,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: c_width,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, left: 15),
-                                child: RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(
-                                    text:
-                                        "Use ${specialPriceList[_currentIndex2++]} points\n",
-                                    style: TextStyle(
-                                        fontFamily: 'Jost',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 28),
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            "${specialDetailList[_currentIndex3++]}",
-                                        style: TextStyle(
-                                          fontFamily: 'Jost',
-                                          height: 1.1,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: checkOutOrder,
-                                child:
-                                    // crossAxisAlignment: CrossAxisAlignment.end,
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                    Container(
-                                  width: c_width,
-                                  child: Text(
-                                    'Exchange',
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      color: Color(0xff4A5F30),
-                                      fontFamily: 'Jost',
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 3)
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 30.0,
-                  ),
-                  height: 130,
-                  color: Color(0xffFFFBF2),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            '${shopPictureList[_currentIndex++]}',
-                            width: 130,
-                            height: 130,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: c_width,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, left: 15),
-                                child: RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(
-                                    text:
-                                        "Use ${specialPriceList[_currentIndex2++]} points\n",
-                                    style: TextStyle(
-                                        fontFamily: 'Jost',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 28),
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            "${specialDetailList[_currentIndex3++]}",
-                                        style: TextStyle(
-                                          fontFamily: 'Jost',
-                                          height: 1.1,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: checkOutOrder,
-                                child:
-                                    // crossAxisAlignment: CrossAxisAlignment.end,
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                    Container(
-                                  width: c_width,
-                                  child: Text(
-                                    'Exchange',
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      color: Color(0xff4A5F30),
-                                      fontFamily: 'Jost',
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 3)
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 30.0,
-                  ),
-                  height: 130,
-                  color: Color(0xffFFFBF2),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            '${shopPictureList[_currentIndex++]}',
-                            width: 130,
-                            height: 130,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: c_width,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, left: 15),
-                                child: RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(
-                                    text:
-                                        "Use ${specialPriceList[_currentIndex2++]} points\n",
-                                    style: TextStyle(
-                                        fontFamily: 'Jost',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 28),
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            "${specialDetailList[_currentIndex3++]}",
-                                        style: TextStyle(
-                                          fontFamily: 'Jost',
-                                          height: 1.1,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: checkOutOrder,
-                                child:
-                                    // crossAxisAlignment: CrossAxisAlignment.end,
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                    Container(
-                                  width: c_width,
-                                  child: Text(
-                                    'Exchange',
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      color: Color(0xff4A5F30),
-                                      fontFamily: 'Jost',
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 3)
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(padding: const EdgeInsets.only(top: 30,),)
-              ]),
+    double detail = MediaQuery.of(context).size.width * 0.9;
+    return MaterialApp(
+        home: Scaffold(
+            resizeToAvoidBottomInset: false,
+            drawer: NavigationDrawerWidget(),
+            appBar: AppBar(
+              iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
+              backgroundColor: Color(0xffE6E7C1),
+              elevation: 0.0,
             ),
-            // ),
-            color: Color(0xffFFFBF2),
-          ),
-        ),
-        // Padding(padding: const EdgeInsets.only(bottom: 20.0),)
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container(
+                  child: Container(
+                      width: detail,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only( bottom: 15.0),
+                            child: RichText(
+                              text: TextSpan(
+                                text: 'Special Deal',
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  fontFamily: 'Jost',
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff323232),
+                                ),
+                              ),
+                            ),
+                          ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: 'Point\n',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black,
+                                  fontSize: 16),
+                              children: [
+                                TextSpan(
+                                  text: '0',
+                                  style: TextStyle(
+                                    fontFamily: 'Jost',
+                                    height: 1.1,
+                                    fontSize: 65,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xff4A5F30),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      color: Color(0xffE6E7C1)),
+                ),
+                // SingleChildScrollView(
+                //   child:
+                // SingleChildScrollView(
+                //   child: Container(
+                //     child:
 
-        //   ),
-        // ),
-        // ),
-      ],
-    );
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: SingleChildScrollView(
+                      child: Column(children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 30.0,
+                          ),
+                          height: 130,
+                          color: Color(0xffFFFBF2),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    '${shopPictureList[_currentIndex++]}',
+                                    width: 130,
+                                    height: 130,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  width: c_width,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, left: 15),
+                                        child: RichText(
+                                          textAlign: TextAlign.left,
+                                          text: TextSpan(
+                                            text:
+                                                "Use ${specialPriceList[_currentIndex2++]} points\n",
+                                            style: TextStyle(
+                                                fontFamily: 'Jost',
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black,
+                                                fontSize: 28),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    "${specialDetailList[_currentIndex3++]}",
+                                                style: TextStyle(
+                                                  fontFamily: 'Jost',
+                                                  height: 1.1,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: checkOutOrder,
+                                        child:
+                                            // crossAxisAlignment: CrossAxisAlignment.end,
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                            Container(
+                                          width: c_width,
+                                          child: Text(
+                                            'Exchange',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              color: Color(0xff4A5F30),
+                                              fontFamily: 'Jost',
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 15,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black, blurRadius: 3)
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 30.0,
+                          ),
+                          height: 130,
+                          color: Color(0xffFFFBF2),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    '${shopPictureList[_currentIndex++]}',
+                                    width: 130,
+                                    height: 130,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  width: c_width,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, left: 15),
+                                        child: RichText(
+                                          textAlign: TextAlign.left,
+                                          text: TextSpan(
+                                            text:
+                                                "Use ${specialPriceList[_currentIndex2++]} points\n",
+                                            style: TextStyle(
+                                                fontFamily: 'Jost',
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black,
+                                                fontSize: 28),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    "${specialDetailList[_currentIndex3++]}",
+                                                style: TextStyle(
+                                                  fontFamily: 'Jost',
+                                                  height: 1.1,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: checkOutOrder,
+                                        child:
+                                            // crossAxisAlignment: CrossAxisAlignment.end,
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                            Container(
+                                          width: c_width,
+                                          child: Text(
+                                            'Exchange',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              color: Color(0xff4A5F30),
+                                              fontFamily: 'Jost',
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 15,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black, blurRadius: 3)
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 30.0,
+                          ),
+                          height: 130,
+                          color: Color(0xffFFFBF2),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    '${shopPictureList[_currentIndex++]}',
+                                    width: 130,
+                                    height: 130,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  width: c_width,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, left: 15),
+                                        child: RichText(
+                                          textAlign: TextAlign.left,
+                                          text: TextSpan(
+                                            text:
+                                                "Use ${specialPriceList[_currentIndex2++]} points\n",
+                                            style: TextStyle(
+                                                fontFamily: 'Jost',
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black,
+                                                fontSize: 28),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    "${specialDetailList[_currentIndex3++]}",
+                                                style: TextStyle(
+                                                  fontFamily: 'Jost',
+                                                  height: 1.1,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: checkOutOrder,
+                                        child:
+                                            // crossAxisAlignment: CrossAxisAlignment.end,
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                            Container(
+                                          width: c_width,
+                                          child: Text(
+                                            'Exchange',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              color: Color(0xff4A5F30),
+                                              fontFamily: 'Jost',
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 15,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black, blurRadius: 3)
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 30.0,
+                          ),
+                          height: 130,
+                          color: Color(0xffFFFBF2),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    '${shopPictureList[_currentIndex++]}',
+                                    width: 130,
+                                    height: 130,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  width: c_width,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, left: 15),
+                                        child: RichText(
+                                          textAlign: TextAlign.left,
+                                          text: TextSpan(
+                                            text:
+                                                "Use ${specialPriceList[_currentIndex2++]} points\n",
+                                            style: TextStyle(
+                                                fontFamily: 'Jost',
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black,
+                                                fontSize: 28),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    "${specialDetailList[_currentIndex3++]}",
+                                                style: TextStyle(
+                                                  fontFamily: 'Jost',
+                                                  height: 1.1,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: checkOutOrder,
+                                        child:
+                                            // crossAxisAlignment: CrossAxisAlignment.end,
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                            Container(
+                                          width: c_width,
+                                          child: Text(
+                                            'Exchange',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              color: Color(0xff4A5F30),
+                                              fontFamily: 'Jost',
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 15,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black, blurRadius: 3)
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 30.0,
+                          ),
+                          height: 130,
+                          color: Color(0xffFFFBF2),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    '${shopPictureList[_currentIndex++]}',
+                                    width: 130,
+                                    height: 130,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  width: c_width,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, left: 15),
+                                        child: RichText(
+                                          textAlign: TextAlign.left,
+                                          text: TextSpan(
+                                            text:
+                                                "Use ${specialPriceList[_currentIndex2++]} points\n",
+                                            style: TextStyle(
+                                                fontFamily: 'Jost',
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black,
+                                                fontSize: 28),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    "${specialDetailList[_currentIndex3++]}",
+                                                style: TextStyle(
+                                                  fontFamily: 'Jost',
+                                                  height: 1.1,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: checkOutOrder,
+                                        child:
+                                            // crossAxisAlignment: CrossAxisAlignment.end,
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                            Container(
+                                          width: c_width,
+                                          child: Text(
+                                            'Exchange',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              color: Color(0xff4A5F30),
+                                              fontFamily: 'Jost',
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 15,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black, blurRadius: 3)
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 30,
+                          ),
+                        )
+                      ]),
+                    ),
+                    // ),
+                    color: Color(0xffFFFBF2),
+                  ),
+                ),
+                // Padding(padding: const EdgeInsets.only(bottom: 20.0),)
+
+                //   ),
+                // ),
+                // ),
+              ],
+            )));
   }
 }
