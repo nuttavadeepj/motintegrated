@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motintegrated/screens/cart.dart';
 
 class ProductDetail extends StatelessWidget {
   final assetPath, productprice, productname, productdetail;
@@ -28,7 +29,12 @@ class ProductDetail extends StatelessWidget {
               icon: Icon(Icons.shopping_basket),
               iconSize: 30.0,
               color: Color(0xff4A5F30),
-              onPressed: () {})
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Cart()),
+                    )
+                  })
         ],
       ),
       body: ListView(
