@@ -31,7 +31,7 @@ class _TrackPageState extends State<TrackPage> {
       ),
       body: Container(
         child: SizedBox(
-            height: 300,
+            height: 500,
             width: double.infinity,
             child: Card(
               child: Padding(
@@ -40,11 +40,48 @@ class _TrackPageState extends State<TrackPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "My trash bag",
-                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500, fontFamily: 'Jost'),
+                      "Tracking number",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Jost'),
                     ),
                     SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            border: Border.all(
+                              color: Color(0xFFE6E7C1),
+                              width: 2,
+                            )),
+                        width: MediaQuery.of(context).size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Order No: AA00015",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text("Tracking No: TH0458A88C8Q",
+                                    style: TextStyle(fontSize: 16))
+                              ]),
+                        )),
+                         SizedBox(
                       height: 20,
+                    ),
+                    Text(
+                      "My trash bag",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Jost'),
+                    ),
+                    SizedBox(
+                      height: 15,
                     ),
                     ...scanresult
                   ],
@@ -154,25 +191,27 @@ class _TrackPageState extends State<TrackPage> {
     ];
     var n = Random().nextInt(item.length);
     setState(() {
-      scanresult.add(Container( decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            
-            border: Border.all(
-                    color: Color(0xFFE6E7C1),
-                    width: 2,
-                  )
-
-            
-            ),
-          
-      width: MediaQuery.of(context).size.width,
+      scanresult.add(Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              border: Border.all(
+                color: Color(0xFFE6E7C1),
+                width: 2,
+              )),
+          width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start ,children: [
-        Text("Name: ${item[n]["name"]}", style: TextStyle(fontSize: 16),),
-        Text("ID: ${item[n]["id"]}", style: TextStyle(fontSize: 16)),
-        Text("Scan Date: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}", style: TextStyle(fontSize: 16))
-      ]),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                "Name: ${item[n]["name"]}",
+                style: TextStyle(fontSize: 16),
+              ),
+              Text("ID: ${item[n]["id"]}", style: TextStyle(fontSize: 16)),
+              Text(
+                  "Scan Date: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}",
+                  style: TextStyle(fontSize: 16))
+            ]),
           )));
     });
   }

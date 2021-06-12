@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/textfield.dart';
 import 'package:motintegrated/widgets/button.dart';
+import 'package:motintegrated/screens/track.dart';
 
 class CheckOut extends StatefulWidget {
   @override
@@ -12,12 +13,14 @@ class _CheckOutState extends State<CheckOut> {
     showDialog(
         context: context,
         builder: (cpntext) => AlertDialog(
-              title: Center(child: Text('Check Out', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500))),
+              title: Center(
+                  child: Text('Check Out',
+                      style: TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.w500))),
               content: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
                   'Are you sure you want to check out your product? After confirming, the money in account will be paid off.',
-                  
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -25,16 +28,47 @@ class _CheckOutState extends State<CheckOut> {
                 FlatButton(
                   textColor: Colors.black,
                   onPressed: () => Navigator.pop(context),
-                  child: Text('CANCEL', style: TextStyle(color: Colors.black54, fontSize: 16)),
+                  child: Text('CANCEL',
+                      style: TextStyle(color: Colors.black54, fontSize: 16)),
                 ),
                 FlatButton(
                   textColor: Colors.black,
-                  onPressed: () {},
-                  child: Text('ACCEPT', style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
+                  onPressed: () {
+                    purchaseSuccess();
+                  },
+                  child: Text('ACCEPT',
+                      style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
                 ),
               ],
             ));
   }
+
+  void purchaseSuccess() {showDialog(
+        context: context,
+        builder: (cpntext) => AlertDialog(
+              title: Center(
+                  child: Text('Purchase successfully. You will receive the product no later than 4 working days.',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w400))),
+              
+              actions: [
+                FlatButton(
+                  textColor: Colors.black,
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('',
+                      style: TextStyle(color: Colors.black54, fontSize: 16)),
+                ),
+                FlatButton(
+                  textColor: Colors.black,
+                  onPressed: () {
+                  Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TrackPage()));
+                  },
+                  child: Text('TRACKING',
+                      style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
+                ),
+              ],
+            ));}
 
   @override
   Widget build(BuildContext context) {
