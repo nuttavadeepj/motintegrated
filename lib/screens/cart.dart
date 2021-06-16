@@ -48,8 +48,12 @@ class Cart extends StatelessWidget {
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Color(0xff4A5F30)),
             onPressed: () {
-              Navigator.of(context).pop();
-            },
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                (ShopPage()))); 
+                  },
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
