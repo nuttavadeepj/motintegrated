@@ -45,7 +45,7 @@ class _CheckOutState extends State<CheckOut> {
 
   void purchaseSuccess() {showDialog(
         context: context,
-        builder: (cpntext) => AlertDialog(
+        builder: (context) => AlertDialog(
               title: Center(
                   child: Text('Purchase successfully. You will receive the product no later than 4 working days.',
                       style: TextStyle(

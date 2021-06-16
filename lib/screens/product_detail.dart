@@ -22,7 +22,7 @@ class _ProductDetailState extends State<ProductDetail> {
               title: Center(
                   child: Text('Add to cart already!',
                       style: TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.w500))),
+                          fontSize: 23, fontWeight: FontWeight.w500))),
               actions: [
                 FlatButton(
                   textColor: Colors.black,
@@ -37,7 +37,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         MaterialPageRoute(builder: (context) => Cart()));
                   },
                   child: Text('GO TO CART',
-                      style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
+                      style: TextStyle(fontSize: 15, color: Color(0xFF4A5F30))),
                 ),
               ],
             ));
