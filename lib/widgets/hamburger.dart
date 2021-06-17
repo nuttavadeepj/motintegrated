@@ -177,7 +177,6 @@ class Profile extends StatelessWidget {
                         children: [
                           Container(
                             width: 190,
-                            child: Expanded(
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Padding(
@@ -190,11 +189,11 @@ class Profile extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
+                          
                           const SizedBox(height: 5),
                           Container(
                             width: 190,
-                            child: Expanded(
+                            
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Text(
@@ -204,7 +203,7 @@ class Profile extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          )
+                          
                         ]),
                   )
                 ],
