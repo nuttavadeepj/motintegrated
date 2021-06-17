@@ -1,7 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 
-class SpecialDeal extends StatelessWidget {
+class SpecialDeal extends StatefulWidget {
+  @override
+  State<SpecialDeal> createState() => _SpecialDealState();
+}
+
+class _SpecialDealState extends State<SpecialDeal> {
+  int point = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  Future<void> getUser() async {
+    final firebaseUser = await FirebaseAuth.instance.currentUser!;
+    await Firebase.initializeApp().then((value) async {
+      await FirebaseFirestore.instance
+          .collection('user')
+          .doc(firebaseUser.uid)
+          .snapshots()
+          .listen((event) {
+        setState(() {
+          point = event.data()!['point'];
+        });
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     void checkOutOrder() {
       showDialog(
@@ -80,7 +112,7 @@ class SpecialDeal extends StatelessWidget {
                                     fontWeight: FontWeight.w500),
                                 children: [
                                   TextSpan(
-                                    text: '0',
+                                    text: '$point',
                                     style: TextStyle(
                                         height: 1,
                                         color: Color(0xFF4A5F30),
@@ -251,7 +283,7 @@ class DealBox extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Colors.white,
-          boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 3)],
+          boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 2)],
         ),
       ),
     );

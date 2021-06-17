@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:motintegrated/models/user_model.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -10,10 +13,14 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   String name = '';
   String email = '';
+  String address = '';
+  String phone = '';
+  int point = 0;
   @override
   void initState() {
     super.initState();
     getData();
+    getUser();
   }
 
   Future<void> getData() async {
@@ -24,6 +31,24 @@ class _ProfilePageState extends State<ProfilePage> {
       email = user.email!;
     });
     print('login by $name');
+  }
+
+  Future<void> getUser() async {
+    final firebaseUser = await FirebaseAuth.instance.currentUser!;
+    await Firebase.initializeApp().then((value) async {
+      await FirebaseFirestore.instance
+          .collection('user')
+          .doc(firebaseUser.uid)
+          .snapshots()
+          .listen((event) {
+        setState(() {
+          address = event.data()!['address'];
+          phone = event.data()!['phone'];
+          point = event.data()!['point'];
+        });
+        print('event => $point');
+      });
+    });
   }
 
   @override
@@ -72,22 +97,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 38.0),
                                       child: Container(
-                                        alignment: Alignment.center,
-                                        width: 270,
-                                        child: Expanded(
-                                            child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Text(
-                                                  '$name',
-                                                  style: TextStyle(
-                                                      color: Color(0xFF323232),
-                                                      fontSize: 20,
-                                                      fontFamily: 'Jost',
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ))),
-                                      ),
+                                          alignment: Alignment.center,
+                                          width: 270,
+                                          child: SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Text(
+                                                '$name',
+                                                style: TextStyle(
+                                                    color: Color(0xFF323232),
+                                                    fontSize: 20,
+                                                    fontFamily: 'Jost',
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ))),
                                     ),
                                     IconButton(
                                       icon: Icon(Icons.edit,
@@ -108,7 +130,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 2.0),
-                                      child: Text('0',
+                                      child: Text('$point',
                                           style: TextStyle(
                                               height: 1,
                                               color: Color(0xFF4A5F30),
@@ -159,16 +181,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Label(
                                       label: 'Phone Number',
                                     ),
-                                    UserInfo(info: '0811234567'),
+                                    UserInfo(info: '$phone'),
                                     Label(
                                       label: 'Address',
                                     ),
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 20.0),
-                                      child: UserInfo(
-                                          info:
-                                              '123/456, soi sathupradit 11, sathupradit, banananana, banananaa bangkok 10120 '),
+                                      child: UserInfo(info: '$address'),
                                     ),
                                   ],
                                 ),

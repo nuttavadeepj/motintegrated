@@ -97,7 +97,11 @@ class _SignUpState extends State<SignUp> {
           String uid = value.user!.uid;
           print('this is usereid $uid');
           UserModel model = UserModel(
-              address: address, email: email, name: name, phone: phone);
+              address: address,
+              email: email,
+              name: name,
+              phone: phone,
+              point: '0');
           Map<String, dynamic> data = model.toMap();
           await FirebaseFirestore.instance
               .collection('user')

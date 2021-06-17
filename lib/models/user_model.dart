@@ -5,11 +5,13 @@ class UserModel {
   final String email;
   final String name;
   final String phone;
+  final String point;
   UserModel({
     required this.address,
     required this.email,
     required this.name,
     required this.phone,
+    required this.point,
   });
 
   UserModel copyWith({
@@ -17,12 +19,14 @@ class UserModel {
     String? email,
     String? name,
     String? phone,
+    String? point,
   }) {
     return UserModel(
       address: address ?? this.address,
       email: email ?? this.email,
       name: name ?? this.name,
       phone: phone ?? this.phone,
+      point: point ?? this.point,
     );
   }
 
@@ -32,6 +36,7 @@ class UserModel {
       'email': email,
       'name': name,
       'phone': phone,
+      'point': point,
     };
   }
 
@@ -41,6 +46,7 @@ class UserModel {
       email: map['email'],
       name: map['name'],
       phone: map['phone'],
+      point: map['point'],
     );
   }
 
@@ -50,7 +56,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(address: $address, email: $email, name: $name, phone: $phone)';
+    return 'UserModel(address: $address, email: $email, name: $name, phone: $phone, point: $point)';
   }
 
   @override
@@ -61,7 +67,8 @@ class UserModel {
       other.address == address &&
       other.email == email &&
       other.name == name &&
-      other.phone == phone;
+      other.phone == phone &&
+      other.point == point;
   }
 
   @override
@@ -69,6 +76,7 @@ class UserModel {
     return address.hashCode ^
       email.hashCode ^
       name.hashCode ^
-      phone.hashCode;
+      phone.hashCode ^
+      point.hashCode;
   }
 }
