@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:motintegrated/provider/cartProvider.dart';
 import 'package:motintegrated/screens/cart.dart';
 import 'package:motintegrated/widgets/button.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetail extends StatefulWidget {
-  final assetPath, productprice, productname, productdetail;
+  final assetPath, productprice, productname, productdetail,productId;
   ProductDetail(
       {this.assetPath,
       this.productprice,
       this.productname,
-      this.productdetail});
+      this.productdetail,
+      this.productId});
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+  TextEditingController textFieldController = TextEditingController();
   void addToCart() {
+    Provider.of<CartProvider>(context,listen: false).addItemToCart(widget.productId);
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -24,12 +29,6 @@ class _ProductDetailState extends State<ProductDetail> {
                       style: TextStyle(
                           fontSize: 23, fontWeight: FontWeight.w500))),
               actions: [
-                FlatButton(
-                  textColor: Colors.black,
-                  onPressed: () {},
-                  child: Text('',
-                      style: TextStyle(color: Colors.black54, fontSize: 16)),
-                ),
                 FlatButton(
                   textColor: Colors.black,
                   onPressed: () {
@@ -147,11 +146,15 @@ class _ProductDetailState extends State<ProductDetail> {
                 text: 'Add to cart',
                 width: 35.0,
                 onPressed: () {
+                  
                   addToCart();
                 }),
-          ))
+          ),),
+          
         ],
       ),
     );
   }
+
+  
 }

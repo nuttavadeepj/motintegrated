@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   font_awesome_flutter: ^9.0.0
+  shared_preferences: ^2.0.6
   getwidget: ^2.0.2
   flutter:
     sdk: flutter

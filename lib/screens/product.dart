@@ -21,6 +21,7 @@ class Product extends StatelessWidget {
                 childAspectRatio: 0.8,
                 children: <Widget>[
                   _buildCard(
+                    '1',
                       'Orange Trash Bag',
                       '30฿',
                       'images/orangebag.png',
@@ -28,6 +29,7 @@ class Product extends StatelessWidget {
                       false,
                       context),
                   _buildCard(
+                    '2',
                       'Purple Trash Bag',
                       '30฿',
                       'images/purplebag.png',
@@ -35,17 +37,18 @@ class Product extends StatelessWidget {
                       false,
                       context),
                   _buildCard(
+                    '3',
                       'Pink Trash Bag',
                       '30฿',
                       'images/pinkbag.png',
                       'Pink trash bag. It is a trash bag that use for holding biodegradable garbage with the size 40 x 60 ”for 10 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
                       false,
                       context),
-                  _buildCard('Biogas 3 liter', '300฿', 'images/gas.png',
+                  _buildCard('4','Biogas 3 liter', '300฿', 'images/gas.png',
                       'Biogas produced by MOT, which is made from compostable waste, in 3 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine.', false, context),
-                  _buildCard('Biogas 5 liter', '500฿', 'images/gas.png',
+                  _buildCard('5','Biogas 5 liter', '500฿', 'images/gas.png',
                       'Biogas produced by MOT, which is made from compostable waste, in 5 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine', false, context),
-                  _buildCard('Biogas 10 liter', '1000฿', 'images/gas.png',
+                  _buildCard('6','Biogas 10 liter', '1000฿', 'images/gas.png',
                       'Biogas produced by MOT, which is made from compostable waste, in 10 liter/tank, can be used for cooking instead of gas stove, used for lighting, heating,car engine', false, context),
                 ]),
           ),
@@ -55,7 +58,7 @@ class Product extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(String name, String price, String imgPath, String detail,
+  Widget _buildCard(String id,String name, String price, String imgPath, String detail,
       bool added, context) {
     return Padding(
       padding: EdgeInsets.only(top: 5.0, bottom: 5.0, left: 15.0, right: 5.0),
@@ -68,6 +71,7 @@ class Product extends StatelessWidget {
                             productprice: price,
                             productname: name,
                             productdetail: detail,
+                            productId: id,
                           )),
                 )
               },
