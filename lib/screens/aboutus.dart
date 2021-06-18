@@ -57,7 +57,7 @@ class AboutUs extends StatelessWidget {
                                   children: [
                                     TextSpan(
                                         text:
-                                            ' is a service that encourages you to separate waste. You just use our trash bags and we will receive a compostable waste from you. You send us the waste then we will have many special deals for you :)',
+                                            ' is a service that encourages you to separate waste. Application for receiving and managing biodegradable waste (food waste) from households, markets, and small restaurants. You just use our trash bags and we will receive a compostable waste from you. You send us the waste then we will have many special deals for you :)',
                                         style: TextStyle(
                                           fontFamily: 'Jost',
                                           height: 1.3,
