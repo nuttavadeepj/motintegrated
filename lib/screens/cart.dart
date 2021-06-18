@@ -4,11 +4,13 @@ import 'package:motintegrated/screens/checkout.dart';
 import 'package:motintegrated/screens/shop.dart';
 import 'package:motintegrated/provider/cartProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).fetchItem();
+    final void Function(String langCode) langChanged;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -112,7 +114,20 @@ class Cart extends StatelessWidget {
                                                 size: 30,
                                               ),
                                               color: Colors.red,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Provider.of<CartProvider>(
+                                                        context,
+                                                        listen: false)
+                                                    .removeFromCart(
+                                                        cart.items![index],
+                                                        cart.items2![index],
+                                                        cart.items3![index]);
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            (Cart())));
+                                              },
                                             ),
                                           ),
                                         ],
