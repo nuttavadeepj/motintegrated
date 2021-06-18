@@ -154,7 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           image: DecorationImage(
                                             fit: BoxFit.cover,
                                             image: AssetImage(
-                                                "images/profile.jpg"),
+                                                "images/profileja.png"),
                                           )),
                                     ),
                                   ),
