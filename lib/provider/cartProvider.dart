@@ -42,20 +42,20 @@ class CartProvider with ChangeNotifier{
     await fetchItem();
     items?.add(id);
     pref.setStringList('cart', items!);
-    
+    // await pref.clear();
   }
   Future<void> addNameToCart(String name) async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     await fetchItem();
     items2?.add(name);
     pref.setStringList('cart2', items2!);
-    
+    // await pref.clear();
   }
   Future<void> addPriceToCart(String price) async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     await fetchItem();
     items3?.add(price);
     pref.setStringList('cart3', items3!);
-    
+    // await pref.clear();
   }
 }

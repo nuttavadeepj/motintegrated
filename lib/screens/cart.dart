@@ -7,35 +7,35 @@ import 'package:provider/provider.dart';
 
 class Cart extends StatelessWidget {
   // Shopping List
-  final List<String> shopPictureList = [
-    "https://cdn.pixabay.com/photo/2017/12/03/18/04/christmas-balls-2995437_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/12/13/00/23/christmas-3015776_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2019/12/19/10/55/christmas-market-4705877_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2019/12/20/00/03/road-4707345_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
-  ];
+  // final List<String> shopPictureList = [
+  //   "https://cdn.pixabay.com/photo/2017/12/03/18/04/christmas-balls-2995437_960_720.jpg",
+  //   "https://cdn.pixabay.com/photo/2017/12/13/00/23/christmas-3015776_960_720.jpg",
+  //   "https://cdn.pixabay.com/photo/2019/12/19/10/55/christmas-market-4705877_960_720.jpg",
+  //   "https://cdn.pixabay.com/photo/2019/12/20/00/03/road-4707345_960_720.jpg",
+  //   "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
+  // ];
 
-  final List<String> shopNameTagList = [
-    'The First product',
-    'The Second product',
-    'The Third product',
-    'The Fourth product',
-    'The Fifth product',
-  ];
+  // final List<String> shopNameTagList = [
+  //   'The First product',
+  //   'The Second product',
+  //   'The Third product',
+  //   'The Fourth product',
+  //   'The Fifth product',
+  // ];
 
-  final List<int> shopPriceList = [
-    100,
-    200,
-    100,
-    300,
-    200,
-  ];
-
+  // final List<int> shopPriceList = [
+  //   100,
+  //   200,
+  //   100,
+  //   300,
+  //   200,
+  // ];
 
   @override
   Widget build(BuildContext context) {
     int _currentIndex = 0;
     int _currentIndex2 = 0;
+
     Provider.of<CartProvider>(context, listen: false).fetchItem();
     return MaterialApp(
       home: Scaffold(
@@ -80,20 +80,59 @@ class Cart extends StatelessWidget {
                             title: Container(
                               child: Row(
                                 //'${index}'
-                                children: [
+                                //mainAxisAlignment: MainAxisAlignment.start,
+                                //crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                
                                   Container(
+                                    child: Image(
+                                      image: AssetImage(cart.items![index]),
+                                    ),
                                     width: 100,
                                     height: 100,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(12.0),bottomLeft: Radius.circular(12.0)),
-                                        color: Colors.amber),
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(12.0),
+                                            bottomLeft: Radius.circular(12.0)),
+                                        color: Color(0xffE6E7C1)),
                                   ),
-                                  // Text(
-                                  //   cart.items![index],
-                                    
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 15, ),
+                                  ),
+                                    Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text('${cart.items2![index]}',
+                                        style: TextStyle(
+                                          color: Color(0xff9D8671),
+                                          fontFamily: 'Jost',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 25),
+                                    ),
+                                            Text(
+                                        '${cart.items3![index]}',
+                                        style: TextStyle(
+                                            fontFamily: 'Jost',
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 20),
+                                      ),
+                                        
+                                      ],
+                                    ),
+                                  ),
+                                  // Column(children: [
+                                  //   Text(
+                                  //     '${cart.items2![index]}',
+                                      
+                                  // ]),
+                                  // Column(
+                                  //   children: [
+                                  
+                                  //   ],
                                   // ),
-                                    Text(cart.items2![index]),
-                                    Text(cart.items3![index]),
                                 ],
                               ),
                               height: 100,
@@ -116,7 +155,6 @@ class Cart extends StatelessWidget {
                             ),
                           ),
                           itemCount: cart.items!.length,
-                          
                         )),
               ),
               // GFCarousel(
