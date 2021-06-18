@@ -119,7 +119,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
             }),
             SizedBox(height: 110),
             Profile(
-                AssetImage("images/profile.jpg"),
+                AssetImage("images/profileja.png"),
                 '$name',
                 '$email',
                 () => {
