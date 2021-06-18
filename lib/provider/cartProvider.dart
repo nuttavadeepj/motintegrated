@@ -64,4 +64,14 @@ class CartProvider with ChangeNotifier {
     print(items2);
     print(items3);
   }
+
+  Future<void> removeAllFromCart() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await fetchItem();
+    await pref.clear();
+    print(items);
+    print(items2);
+    print(items3);
+    await fetchItem();
+  }
 }

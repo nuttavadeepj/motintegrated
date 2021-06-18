@@ -10,7 +10,44 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).fetchItem();
-    final void Function(String langCode) langChanged;
+
+    void conAllDelete() {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Center(
+                    child: Text('Clear your Cart',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.w500))),
+                content: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    'Are you sure you want to delete all products in your Cart?',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                actions: [
+                  FlatButton(
+                    textColor: Colors.black,
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('CANCEL',
+                        style: TextStyle(color: Colors.black54, fontSize: 16)),
+                  ),
+                  FlatButton(
+                    textColor: Colors.black,
+                    onPressed: () {
+                      Provider.of<CartProvider>(context, listen: false)
+                          .removeAllFromCart();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => (Cart())));
+                    },
+                    child: Text('ACCEPT',
+                        style:
+                            TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
+                  ),
+                ],
+              ));
+    }
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -27,6 +64,18 @@ class Cart extends StatelessWidget {
               ),
             ],
           ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.remove_shopping_cart_rounded,
+                size: 30,
+              ),
+              onPressed: () {
+                conAllDelete();
+              },
+              color: Colors.red,
+            ),
+          ],
           iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Color(0xff4A5F30)),
