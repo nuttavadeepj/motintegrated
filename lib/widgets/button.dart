@@ -90,3 +90,29 @@ class AuthButton extends StatelessWidget {
         ),
       );
 }
+
+class CollectButton extends StatelessWidget {
+  const CollectButton({@required this.text,@required  this.width, required this.onPressed});
+  final text;
+  final width;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) => Container(
+          width: width,
+          height: 20,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              color: Color(0xFF4A5F30)),
+          child: MaterialButton(
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              shape: StadiumBorder(),
+              child: Text(
+                text,
+                style: TextStyle(
+                    color: Colors.white, fontSize: 12, fontFamily: 'Jost'),
+              ),
+              onPressed: onPressed),
+        
+      );
+}

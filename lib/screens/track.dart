@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
@@ -30,64 +31,82 @@ class _TrackPageState extends State<TrackPage> {
         elevation: 0.0,
       ),
       body: Container(
-        child: SizedBox(
-            height: 500,
-            width: double.infinity,
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Tracking number",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Jost'),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
-                            border: Border.all(
-                              color: Color(0xFFE6E7C1),
-                              width: 2,
+        child: Column(
+          children: [
+            SizedBox(
+                height: 200,
+                width: double.infinity,
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Tracking number",
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Jost'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                border: Border.all(
+                                  color: Color(0xFFE6E7C1),
+                                  width: 2,
+                                )),
+                            width: MediaQuery.of(context).size.width,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Order No: AA00015",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    Text("Tracking No: TH0458A88C8Q",
+                                        style: TextStyle(fontSize: 16))
+                                  ]),
                             )),
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Order No: AA00015",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                Text("Tracking No: TH0458A88C8Q",
-                                    style: TextStyle(fontSize: 16))
-                              ]),
-                        )),
-                         SizedBox(
-                      height: 20,
+                        SizedBox(
+                          height: 15,
+                        ),
+                      ],
                     ),
-                    Text(
-                      "My trash bag",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Jost'),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ...scanresult
-                  ],
+                  ),
+                )),
+            SizedBox(
+              height: 350,
+              width: double.infinity,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "My trash bag",
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Jost'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ...scanresult
+                      ]),
                 ),
               ),
-            )),
+            ),
+          ],
+        ),
         padding: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -97,6 +116,7 @@ class _TrackPageState extends State<TrackPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFF4A5F30),
         onPressed: startScan,
         child: Icon(Icons.qr_code_scanner),
       ),
@@ -203,9 +223,23 @@ class _TrackPageState extends State<TrackPage> {
             padding: const EdgeInsets.all(10),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                "Name: ${item[n]["name"]}",
-                style: TextStyle(fontSize: 16),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 135,
+                    child: Text(
+                      "Name: ${item[n]["name"]}",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50.0),
+                    child: CollectButton(
+                        text: 'ready to collect',
+                        width: 118.0,
+                        onPressed: () {}),
+                  ),
+                ],
               ),
               Text("ID: ${item[n]["id"]}", style: TextStyle(fontSize: 16)),
               Text(
