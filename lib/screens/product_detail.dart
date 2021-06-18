@@ -20,7 +20,9 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   TextEditingController textFieldController = TextEditingController();
   void addToCart() {
-    Provider.of<CartProvider>(context,listen: false).addItemToCart(widget.productId);
+    Provider.of<CartProvider>(context,listen: false).addItemToCart(widget.assetPath);
+    Provider.of<CartProvider>(context,listen: false).addNameToCart(widget.productname);
+    Provider.of<CartProvider>(context,listen: false).addPriceToCart(widget.productprice);
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
