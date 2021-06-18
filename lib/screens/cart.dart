@@ -31,6 +31,7 @@ class Cart extends StatelessWidget {
     200,
   ];
 
+
   @override
   Widget build(BuildContext context) {
     int _currentIndex = 0;
@@ -40,13 +41,17 @@ class Cart extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            'My Cart',
-            style: TextStyle(
-                color: Color(0xFF323232),
-                fontSize: 35,
-                fontFamily: 'Jost',
-                fontWeight: FontWeight.w600),
+          title: Column(
+            children: [
+              Text(
+                'My Cart',
+                style: TextStyle(
+                    color: Color(0xFF323232),
+                    fontSize: 35,
+                    fontFamily: 'Jost',
+                    fontWeight: FontWeight.w600),
+              ),
+            ],
           ),
           iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
           leading: IconButton(
@@ -72,9 +77,46 @@ class Cart extends StatelessWidget {
                 child: Consumer<CartProvider>(
                     builder: (ctx, cart, _) => ListView.builder(
                           itemBuilder: (ctx, index) => ListTile(
-                            title: Text(cart.items![index]),
+                            title: Container(
+                              child: Row(
+                                //'${index}'
+                                children: [
+                                  Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(12.0),bottomLeft: Radius.circular(12.0)),
+                                        color: Colors.amber),
+                                  ),
+                                  // Text(
+                                  //   cart.items![index],
+                                    
+                                  // ),
+                                    Text(cart.items2![index]),
+                                    Text(cart.items3![index]),
+                                ],
+                              ),
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: Color(0xffFFFBF2),
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 1,
+                                    blurRadius: 7,
+                                    offset: Offset(
+                                        3, 4), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              margin: EdgeInsets.only(
+                                top: 15,
+                              ),
+                            ),
                           ),
                           itemCount: cart.items!.length,
+                          
                         )),
               ),
               // GFCarousel(
@@ -169,7 +211,7 @@ class Cart extends StatelessWidget {
               //   onPageChanged: (index) {},
               // ),
               Padding(
-                padding: const EdgeInsets.only(top: 100, left: 30, right: 30),
+                padding: const EdgeInsets.only(left: 30, right: 30),
                 child: new Container(
                   child: Row(
                     children: <Widget>[
