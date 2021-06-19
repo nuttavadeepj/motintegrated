@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:motintegrated/models/order.dart';
 import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
@@ -19,6 +18,7 @@ class _TrackPageState extends State<TrackPage> {
   var scanresult = [];
   var orderid;
   var trackno;
+  bool isWaiting = false;
 
   @override
   void initState() {
@@ -39,34 +39,18 @@ class _TrackPageState extends State<TrackPage> {
         });
         print('order ja => $orderid');
         await FirebaseFirestore.instance
-          .collection('order')
-          .doc(orderid)
-          .snapshots()
-          .listen((event) {
-        setState(() {
-          trackno = event.data()!['trackno'];
+            .collection('order')
+            .doc(orderid)
+            .snapshots()
+            .listen((event) {
+          setState(() {
+            trackno = event.data()!['trackno'];
+          });
+          print('track naja => $trackno');
         });
-        print('track naja => $trackno');
       });
-      });
-      
     });
   }
-
-  // Future<void> getTrackNo() async {
-  //   await Firebase.initializeApp().then((value) async {
-  //     await FirebaseFirestore.instance
-  //         .collection('order')
-  //         .doc(orderid)
-  //         .snapshots()
-  //         .listen((event) {
-  //       setState(() {
-  //         trackno = event.data()!['trackno'];
-  //       });
-  //       print('track naja => $trackno');
-  //     });
-  //   });
-  // }
 
   void readyCollect() {
     showDialog(
@@ -95,6 +79,9 @@ class _TrackPageState extends State<TrackPage> {
                   onPressed: () {
                     Navigator.pop(context);
                     confirmDialog();
+                    setState(() {
+                      isWaiting = true;
+                    });
                   },
                   child: Text('CONFIRM',
                       style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
@@ -343,7 +330,8 @@ class _TrackPageState extends State<TrackPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 50.0),
-                    child: CollectButton(
+                    child: isWaiting ? WaitingButton(text: 'waiting', width: 118.0, onPressed: () {}) :
+                    CollectButton(
                         text: 'ready to collect',
                         width: 118.0,
                         onPressed: () {
