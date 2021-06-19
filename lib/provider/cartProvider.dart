@@ -11,11 +11,9 @@ class CartProvider with ChangeNotifier {
   CartProvider(this.token, this.items, this.items2, this.items3);
   Future<void> fetchItem() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
- 
-    items = pref.getStringList('cart');
+     items = pref.getStringList('cart');
     items2 = pref.getStringList('cart2');
     items3 = pref.getStringList('cart3');
-    
     if (items == null) {
       items = [];
     }
@@ -25,11 +23,10 @@ class CartProvider with ChangeNotifier {
     if (items3 == null) {
       items3 = [];
     }
-
     print(items);
     print(items2);
     print(items3);
-    
+    // pref.clear();
   }
 
   Future<void> addItemToCart(String pic) async {
@@ -83,7 +80,7 @@ class CartProvider with ChangeNotifier {
 
   Future<void> sumOfProducts() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    await fetchItem();
+    //await fetchItem();
     var sum = 0;
     //items3 = [];
     for (var i = items!.length-1; i >= 0; i--) {
