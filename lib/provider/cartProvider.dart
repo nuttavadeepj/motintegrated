@@ -1,20 +1,21 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
   String? token = null;
-
+  
   List<String>? items = [];
   List<String>? items2 = [];
   List<String>? items3 = [];
   CartProvider(this.token, this.items, this.items2, this.items3);
   Future<void> fetchItem() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    
+    await sumOfProducts();
     items = pref.getStringList('cart');
     items2 = pref.getStringList('cart2');
     items3 = pref.getStringList('cart3');
-
+    
     if (items == null) {
       items = [];
     }
@@ -28,6 +29,7 @@ class CartProvider with ChangeNotifier {
     print(items);
     print(items2);
     print(items3);
+    
   }
 
   Future<void> addItemToCart(String pic) async {
@@ -79,22 +81,17 @@ class CartProvider with ChangeNotifier {
     await fetchItem();
   }
 
-  // Future<void> sumOfProducts() async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   await fetchItem();
-  //   var sum = 0;
-    
-  //   for (var i = 0; i < items!.length; i++) {
-  //     if(items3.toString() == '30'){
-  //       sum += 30;
-  //     }else if(items3.toString() == '300'){
-  //       sum += 300;
-  //     }else if(items3.toString()  == '500'){
-  //       sum += 500;
-  //     }else if(items3.toString()  == '1000'){
-  //       sum += 1000;
-  //     }
-  //   }
-  //   print("Sum : ${sum}");
-  // }
+  Future<void> sumOfProducts() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await fetchItem();
+    var sum = 0;
+    //items3 = [];
+    for (var i = items!.length-1; i >= 0; i--) {
+      sum += int.parse(items3![i]);    
+    }
+    pref.setInt('key', sum);
+    notifyListeners();
+    //pref.setStringList('cart', sum.toString());
+    print("Sum Product : ${sum}");
+  }
 }

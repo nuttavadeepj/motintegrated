@@ -10,7 +10,7 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).fetchItem();
-    //Provider.of<CartProvider>(context, listen: false).sumOfProducts();
+    Provider.of<CartProvider>(context, listen: false).sumOfProducts();
     void conAllDelete() {
       showDialog(
           context: context,
@@ -215,7 +215,7 @@ class Cart extends StatelessWidget {
                       Expanded(
                         child: RichText(
                           text: TextSpan(
-                            children: [
+                            children: [  
                               TextSpan(
                                 text: 'Purchase amount',
                                 style: TextStyle(
@@ -229,11 +229,13 @@ class Cart extends StatelessWidget {
                           ),
                         ),
                       ),
+                      
                       RichText(
                         text: TextSpan(
                           children: [
+                            
                             TextSpan(
-                              text: '900',
+                              text: "key.sum", //Problem
                               style: TextStyle(
                                   fontFamily: 'Jost',
                                   fontWeight: FontWeight.normal,
