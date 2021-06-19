@@ -22,21 +22,21 @@ class AllBag extends StatelessWidget {
                 children: <Widget>[
                   _buildCard(
                       'Orange Trash Bag',
-                      '30฿',
+                      '30',
                       'images/orangebag.png',
                       'Orange trash bag. It is a trash bag that use for holding biodegradable garbage with the size 20x30 ”for 25 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
                       false,
                       context),
                   _buildCard(
                       'Purple Trash Bag',
-                      '30฿',
+                      '30',
                       'images/purplebag.png',
                       'Purple trash bag. It is a trash bag that use for holding biodegradable garbage with the size 30x40 ”for 20 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
                       false,
                       context),
                   _buildCard(
                       'Pink Trash Bag',
-                      '30฿',
+                      '30',
                       'images/pinkbag.png',
                       'Pink trash bag. It is a trash bag that use for holding biodegradable garbage with the size 40 x 60 ”for 10 bags. Once you have purchased, you can scan the garbage bags into the MOT system to redeem many privileges.',
                       false,

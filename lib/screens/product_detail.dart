@@ -97,7 +97,7 @@ class _ProductDetailState extends State<ProductDetail> {
             child: Container(
               width: MediaQuery.of(context).size.width - 50.0,
               child: Text(
-                widget.productprice,
+                '${widget.productprice} ฿',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 30.0,

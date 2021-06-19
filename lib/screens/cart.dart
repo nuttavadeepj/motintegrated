@@ -10,7 +10,7 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).fetchItem();
-
+    //Provider.of<CartProvider>(context, listen: false).sumOfProducts();
     void conAllDelete() {
       showDialog(
           context: context,
@@ -138,7 +138,7 @@ class Cart extends StatelessWidget {
                                               fontSize: 25),
                                         ),
                                         Text(
-                                          '${cart.items3![index]}',
+                                          '${cart.items3![index]} ฿',
                                           style: TextStyle(
                                               fontFamily: 'Jost',
                                               fontWeight: FontWeight.normal,
