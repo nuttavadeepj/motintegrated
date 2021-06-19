@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
                   CartProvider(auth.token, cart!.items, cart.items2, cart.items3)),
         ],
         child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'MOT',
             theme: ThemeData(fontFamily: 'Jost'),
             home: Welcome()));
