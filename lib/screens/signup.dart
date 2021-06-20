@@ -101,8 +101,7 @@ class _SignUpState extends State<SignUp> {
               email: email,
               name: name,
               phone: phone,
-              point: '0',
-              orderid: '-');
+              point: '0');
           Map<String, dynamic> data = model.toMap();
           await FirebaseFirestore.instance
               .collection('user')

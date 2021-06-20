@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:motintegrated/models/order_model.dart';
 import 'package:motintegrated/screens/checkout.dart';
 import 'package:motintegrated/screens/shop.dart';
 import 'package:motintegrated/provider/cartProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:motintegrated/widgets/button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Cart extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).fetchItem();
     Provider.of<CartProvider>(context, listen: false).sumOfProducts();
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+
     void conAllDelete() {
       showDialog(
           context: context,
@@ -50,6 +56,36 @@ class Cart extends StatelessWidget {
               ));
     }
 
+    Future<void> createOrder() async {
+      final firebaseUser = await FirebaseAuth.instance.currentUser!;
+
+      DocumentReference order = await FirebaseFirestore.instance
+          .collection('user')
+          .doc(firebaseUser.uid)
+          .collection('orderid')
+          .doc();
+      OrderModel model = OrderModel(
+          orderid: '${order.id}',
+          product: ['${cartProvider.items2}'],
+          trackno: 'in progress',
+          price: cartProvider.summ,
+          userid: '${firebaseUser.uid}',
+          date: FieldValue.serverTimestamp());
+      Map<String, dynamic> data = model.toMap();
+      order.set(data).then((value) async {
+        await FirebaseFirestore.instance
+            .collection('order')
+            .doc(order.id)
+            .set(data);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => CheckOut()),
+        );
+
+        print('orderid is ${order.id}');
+      });
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -59,7 +95,7 @@ class Cart extends StatelessWidget {
               Text(
                 'My Cart',
                 style: TextStyle(
-              color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
+                    color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
               ),
             ],
           ),
@@ -383,44 +419,43 @@ class Cart extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 40, left: 30, right: 30, bottom: 20),
-               child: Button(text: 'Check Out', width: 350.0, onPressed: () {
-                 Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                (CheckOut())));
-               }))
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) =>
-                //                 (CheckOut()))); //Don't forget to change Navigator location of button
-                //   },
-                //   style: ElevatedButton.styleFrom(
-                //       primary: Color(0xFF4A5F30),
-                //       elevation: 5,
-                //       padding: EdgeInsets.symmetric(
-                //         horizontal: 25,
-                //         vertical: 10,
-                //       ),
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: new BorderRadius.circular(40.0))),
-                //   child: Center(
-                //     child: Text(
-                //       'Check Out',
-                //       style: TextStyle(
-                //           fontFamily: 'Jost',
-                //           color: Colors.white,
-                //           fontSize: 28,
-                //           fontWeight: FontWeight.bold),
-                //     ),
-                //   ),
-                // ),
-             // )
+                  padding: const EdgeInsets.only(
+                      top: 40, left: 30, right: 30, bottom: 20),
+                  child: Button(
+                      text: 'Check Out',
+                      width: 350.0,
+                      onPressed: () {
+                        createOrder();
+                      }))
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) =>
+              //                 (CheckOut()))); //Don't forget to change Navigator location of button
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //       primary: Color(0xFF4A5F30),
+              //       elevation: 5,
+              //       padding: EdgeInsets.symmetric(
+              //         horizontal: 25,
+              //         vertical: 10,
+              //       ),
+              //       shape: RoundedRectangleBorder(
+              //           borderRadius: new BorderRadius.circular(40.0))),
+              //   child: Center(
+              //     child: Text(
+              //       'Check Out',
+              //       style: TextStyle(
+              //           fontFamily: 'Jost',
+              //           color: Colors.white,
+              //           fontSize: 28,
+              //           fontWeight: FontWeight.bold),
+              //     ),
+              //   ),
+              // ),
+              // )
             ]),
           ),
         ),

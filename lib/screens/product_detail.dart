@@ -5,7 +5,7 @@ import 'package:motintegrated/widgets/button.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetail extends StatefulWidget {
-  final assetPath, productprice, productname, productdetail,productId;
+  final assetPath, productprice, productname, productdetail, productId;
   ProductDetail(
       {this.assetPath,
       this.productprice,
@@ -20,9 +20,12 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   TextEditingController textFieldController = TextEditingController();
   void addToCart() {
-    Provider.of<CartProvider>(context,listen: false).addItemToCart(widget.assetPath);
-    Provider.of<CartProvider>(context,listen: false).addNameToCart(widget.productname);
-    Provider.of<CartProvider>(context,listen: false).addPriceToCart(widget.productprice);
+    Provider.of<CartProvider>(context, listen: false)
+        .addItemToCart(widget.assetPath);
+    Provider.of<CartProvider>(context, listen: false)
+        .addNameToCart(widget.productname);
+    Provider.of<CartProvider>(context, listen: false)
+        .addPriceToCart(widget.productprice);
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -33,9 +36,11 @@ class _ProductDetailState extends State<ProductDetail> {
               actions: [
                 FlatButton(
                   textColor: Colors.black,
-                  onPressed: () {
+                  onPressed: () { Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Cart()));
+                   
+                    
                   },
                   child: Text('GO TO CART',
                       style: TextStyle(fontSize: 15, color: Color(0xFF4A5F30))),
@@ -142,21 +147,18 @@ class _ProductDetailState extends State<ProductDetail> {
           SizedBox(height: 20.0),
 
           Center(
-              child: Container(
-            width: MediaQuery.of(context).size.width - 50.0,
-            child: Button(
-                text: 'Add to cart',
-                width: 35.0,
-                onPressed: () {
-                  
-                  addToCart();
-                }),
-          ),),
-          
+            child: Container(
+              width: MediaQuery.of(context).size.width - 50.0,
+              child: Button(
+                  text: 'Add to cart',
+                  width: 35.0,
+                  onPressed: () {
+                    addToCart();
+                  }),
+            ),
+          ),
         ],
       ),
     );
   }
-
-  
 }

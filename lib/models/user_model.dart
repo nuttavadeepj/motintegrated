@@ -6,17 +6,14 @@ class UserModel {
   final String name;
   final String phone;
   final String point;
-  final String orderid;
   UserModel({
     required this.address,
     required this.email,
     required this.name,
     required this.phone,
     required this.point,
-    required this.orderid,
   });
-
- 
+  
 
   UserModel copyWith({
     String? address,
@@ -24,7 +21,6 @@ class UserModel {
     String? name,
     String? phone,
     String? point,
-    String? orderid,
   }) {
     return UserModel(
       address: address ?? this.address,
@@ -32,7 +28,6 @@ class UserModel {
       name: name ?? this.name,
       phone: phone ?? this.phone,
       point: point ?? this.point,
-      orderid: orderid ?? this.orderid,
     );
   }
 
@@ -43,7 +38,6 @@ class UserModel {
       'name': name,
       'phone': phone,
       'point': point,
-      'orderid': orderid,
     };
   }
 
@@ -54,7 +48,6 @@ class UserModel {
       name: map['name'],
       phone: map['phone'],
       point: map['point'],
-      orderid: map['orderid'],
     );
   }
 
@@ -64,7 +57,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(address: $address, email: $email, name: $name, phone: $phone, point: $point, orderid: $orderid)';
+    return 'UserModel(address: $address, email: $email, name: $name, phone: $phone, point: $point)';
   }
 
   @override
@@ -76,8 +69,7 @@ class UserModel {
       other.email == email &&
       other.name == name &&
       other.phone == phone &&
-      other.point == point &&
-      other.orderid == orderid;
+      other.point == point;
   }
 
   @override
@@ -86,7 +78,6 @@ class UserModel {
       email.hashCode ^
       name.hashCode ^
       phone.hashCode ^
-      point.hashCode ^
-      orderid.hashCode;
+      point.hashCode;
   }
 }

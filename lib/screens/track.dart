@@ -26,30 +26,44 @@ class _TrackPageState extends State<TrackPage> {
     getOrder();
   }
 
+  // Future<void> getOrder() async {
+  //   final firebaseUser = await FirebaseAuth.instance.currentUser!;
+  //   await Firebase.initializeApp().then((value) async {
+  //     var order = await FirebaseFirestore.instance
+  //         .collection('user')
+  //         .doc(firebaseUser.uid)
+  //         .collection('orderid')
+  //         .snapshots();
+
+  //     //   .listen((event) async {
+  //     // setState(() {
+  //     //   orderid = event.data()!['orderid'];
+  //     // });
+  //     // print('order ja => $orderid');
+  //     // await FirebaseFirestore.instance
+  //     //     .collection('order')
+  //     //     .doc(orderid)
+  //     //     .snapshots()
+  //     //     .listen((event) {
+  //     //   setState(() {
+  //     //     trackno = event.data()!['trackno'];
+  //     //   });
+  //     //   print('track naja => $trackno');
+  //     // });
+  //   });
+  // }
+
+  CollectionReference _collectionRef =
+      FirebaseFirestore.instance.collection('user');
+
   Future<void> getOrder() async {
     final firebaseUser = await FirebaseAuth.instance.currentUser!;
-    await Firebase.initializeApp().then((value) async {
-      await FirebaseFirestore.instance
-          .collection('user')
-          .doc(firebaseUser.uid)
-          .snapshots()
-          .listen((event) async {
-        setState(() {
-          orderid = event.data()!['orderid'];
-        });
-        print('order ja => $orderid');
-        await FirebaseFirestore.instance
-            .collection('order')
-            .doc(orderid)
-            .snapshots()
-            .listen((event) {
-          setState(() {
-            trackno = event.data()!['trackno'];
-          });
-          print('track naja => $trackno');
-        });
-      });
-    });
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot =
+        await _collectionRef.doc(firebaseUser.uid).collection('orderid').get();
+    // Get data from docs and convert map to List
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    print(allData);
   }
 
   void readyCollect() {
