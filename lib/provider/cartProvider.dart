@@ -79,23 +79,15 @@ class CartProvider with ChangeNotifier {
 
   Future<void> sumOfProducts() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    //await fetchItem();
     var sum = 0;
-    //items3 = [];
     for (var i = items!.length-1; i >= 0; i--) {
       sum += int.parse(items3![i]);    
     }
-    //sumAll = pref.setInt('key', sum);
     if(sum == 0){
       print('No');
     }
-    // if(sumAll == 0){
-    //   print('No WAY');
-    // }
-    // pref.setInt('cart', sum);
     summ = sum;
     notifyListeners();
-    //pref.setStringList('cart', sum.toString());
     print("Sum Product : $sum");
   }
 }
