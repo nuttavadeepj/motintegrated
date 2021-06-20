@@ -35,6 +35,26 @@ class _SpecialDealState extends State<SpecialDeal> {
 
   @override
   Widget build(BuildContext context) {
+    void exchangePoint() {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Center(
+                    child: Text('Not enough points',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w400))),
+                actions: [
+                  FlatButton(
+                    textColor: Colors.black,
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('OK',
+                        style:
+                            TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
+                  ),
+                ],
+              ));
+    }
+
     void checkOutOrder() {
       showDialog(
           context: context,
@@ -59,7 +79,10 @@ class _SpecialDealState extends State<SpecialDeal> {
                   ),
                   FlatButton(
                     textColor: Colors.black,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                      exchangePoint();
+                    },
                     child: Text('ACCEPT',
                         style:
                             TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
@@ -134,7 +157,7 @@ class _SpecialDealState extends State<SpecialDeal> {
                     child: SingleChildScrollView(
                       child: Column(children: <Widget>[
                         DealBox(
-                            point: 50,
+                            points: 50,
                             detail:
                                 'Get free 1 kg. vegetables from the organic farm.',
                             picture:
@@ -143,7 +166,7 @@ class _SpecialDealState extends State<SpecialDeal> {
                               checkOutOrder();
                             }),
                         DealBox(
-                            point: 50,
+                            points: 50,
                             detail:
                                 'Get free 1 icecream from monthlyking shop.',
                             picture:
@@ -152,7 +175,7 @@ class _SpecialDealState extends State<SpecialDeal> {
                               checkOutOrder();
                             }),
                         DealBox(
-                            point: 20,
+                            points: 20,
                             detail:
                                 'Get discount 5% coupon at starbuck coffee.',
                             picture:
@@ -160,9 +183,8 @@ class _SpecialDealState extends State<SpecialDeal> {
                             onpress: () {
                               checkOutOrder();
                             }),
-                          
                         DealBox(
-                            point: 50,
+                            points: 50,
                             detail:
                                 'Get free 50 g. cosmos seeds from the Cosmos garden.',
                             picture:
@@ -171,7 +193,7 @@ class _SpecialDealState extends State<SpecialDeal> {
                               checkOutOrder();
                             }),
                         DealBox(
-                            point: 30,
+                            points: 30,
                             detail:
                                 'Get free a siphon coffee maker with 150 g. coffee beans.',
                             picture:
@@ -195,13 +217,13 @@ class _SpecialDealState extends State<SpecialDeal> {
 }
 
 class DealBox extends StatelessWidget {
-  final point;
+  final points;
   final detail;
   final picture;
   final onpress;
 
   DealBox(
-      {@required this.point,
+      {@required this.points,
       @required this.detail,
       @required this.picture,
       this.onpress});
@@ -235,7 +257,7 @@ class DealBox extends StatelessWidget {
                     child: RichText(
                       textAlign: TextAlign.left,
                       text: TextSpan(
-                        text: "Use $point points\n",
+                        text: "Use $points points\n",
                         style: TextStyle(
                             fontFamily: 'Jost',
                             fontWeight: FontWeight.w600,

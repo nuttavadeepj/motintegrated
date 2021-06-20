@@ -102,7 +102,11 @@ class _TrackPageState extends State<TrackPage> {
               actions: [
                 FlatButton(
                   textColor: Colors.black,
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TrackPage()));
+                  },
                   child: Text('CLOSE',
                       style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
                 ),
@@ -330,13 +334,15 @@ class _TrackPageState extends State<TrackPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 50.0),
-                    child: isWaiting ? WaitingButton(text: 'waiting', width: 118.0, onPressed: () {}) :
-                    CollectButton(
-                        text: 'ready to collect',
-                        width: 118.0,
-                        onPressed: () {
-                          readyCollect();
-                        }),
+                    child: isWaiting
+                        ? WaitingButton(
+                            text: 'waiting', width: 118.0, onPressed: () {})
+                        : CollectButton(
+                            text: 'ready to collect',
+                            width: 118.0,
+                            onPressed: () {
+                              readyCollect();
+                            }),
                   ),
                 ],
               ),
