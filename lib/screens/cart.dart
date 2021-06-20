@@ -5,6 +5,7 @@ import 'package:motintegrated/screens/shop.dart';
 import 'package:motintegrated/provider/cartProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:motintegrated/widgets/button.dart';
 
 class Cart extends StatelessWidget {
   @override
@@ -58,10 +59,7 @@ class Cart extends StatelessWidget {
               Text(
                 'My Cart',
                 style: TextStyle(
-                    color: Color(0xFF323232),
-                    fontSize: 35,
-                    fontFamily: 'Jost',
-                    fontWeight: FontWeight.w600),
+              color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
               ),
             ],
           ),
@@ -134,7 +132,7 @@ class Cart extends StatelessWidget {
                                               color: Color(0xff9D8671),
                                               fontFamily: 'Jost',
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 25),
+                                              fontSize: 22),
                                         ),
                                         Text(
                                           '${cart.items3![index]} ฿',
@@ -159,8 +157,8 @@ class Cart extends StatelessWidget {
                                           WidgetSpan(
                                             child: IconButton(
                                               icon: const Icon(
-                                                Icons.delete_forever_rounded,
-                                                size: 30,
+                                                Icons.clear_rounded,
+                                                size: 25,
                                               ),
                                               color: Colors.red,
                                               onPressed: () {
@@ -212,7 +210,7 @@ class Cart extends StatelessWidget {
               //   builder: (ctx, data, _) => Text('${data.summ}'),
               // )), Example of Consumer
               Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 50),
                 child: new Container(
                   child: Row(
                     children: <Widget>[
@@ -225,7 +223,7 @@ class Cart extends StatelessWidget {
                                 style: TextStyle(
                                     fontFamily: 'Jost',
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 28,
+                                    fontSize: 25,
                                     height: 1.6,
                                     color: Color(0xff000000)),
                               ),
@@ -240,7 +238,7 @@ class Cart extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: 'Jost',
                               fontWeight: FontWeight.normal,
-                              fontSize: 28,
+                              fontSize: 25,
                               height: 1.6,
                               color: Color(0xff000000)),
                         ),
@@ -253,7 +251,7 @@ class Cart extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'Jost',
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 28,
+                                  fontSize: 25,
                                   height: 1.6,
                                   color: Color(0xff000000)),
                             ),
@@ -278,7 +276,7 @@ class Cart extends StatelessWidget {
                                 style: TextStyle(
                                     fontFamily: 'Jost',
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 28,
+                                    fontSize: 25,
                                     height: 1.6,
                                     color: Color(0xff000000)),
                               ),
@@ -294,7 +292,7 @@ class Cart extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'Jost',
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 28,
+                                  fontSize: 25,
                                   height: 1.6,
                                   color: Color(0xff000000)),
                             ),
@@ -309,7 +307,7 @@ class Cart extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'Jost',
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 28,
+                                  fontSize: 25,
                                   height: 1.6,
                                   color: Color(0xff000000)),
                             ),
@@ -387,35 +385,42 @@ class Cart extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(
                     top: 40, left: 30, right: 30, bottom: 20),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
+               child: Button(text: 'Check Out', width: 350.0, onPressed: () {
+                 Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                (CheckOut()))); //Don't forget to change Navigator location of button
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF4A5F30),
-                      elevation: 5,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 25,
-                        vertical: 10,
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(40.0))),
-                  child: Center(
-                    child: Text(
-                      'Check Out',
-                      style: TextStyle(
-                          fontFamily: 'Jost',
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              )
+                                (CheckOut())));
+               }))
+                // ElevatedButton(
+                //   onPressed: () {
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) =>
+                //                 (CheckOut()))); //Don't forget to change Navigator location of button
+                //   },
+                //   style: ElevatedButton.styleFrom(
+                //       primary: Color(0xFF4A5F30),
+                //       elevation: 5,
+                //       padding: EdgeInsets.symmetric(
+                //         horizontal: 25,
+                //         vertical: 10,
+                //       ),
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: new BorderRadius.circular(40.0))),
+                //   child: Center(
+                //     child: Text(
+                //       'Check Out',
+                //       style: TextStyle(
+                //           fontFamily: 'Jost',
+                //           color: Colors.white,
+                //           fontSize: 28,
+                //           fontWeight: FontWeight.bold),
+                //     ),
+                //   ),
+                // ),
+             // )
             ]),
           ),
         ),
