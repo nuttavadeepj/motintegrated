@@ -9,15 +9,16 @@ class OrderModel {
   final String trackno;
   final int? price;
   final String userid;
-  final FieldValue date;
+  final date;
   OrderModel({
     required this.orderid,
     required this.product,
     required this.trackno,
     this.price,
     required this.userid,
-    required this.date,
+    this.date
   });
+  
   
 
   OrderModel copyWith({
@@ -26,7 +27,6 @@ class OrderModel {
     String? trackno,
     int? price,
     String? userid,
-    FieldValue? date,
   }) {
     return OrderModel(
       orderid: orderid ?? this.orderid,
@@ -34,7 +34,6 @@ class OrderModel {
       trackno: trackno ?? this.trackno,
       price: price ?? this.price,
       userid: userid ?? this.userid,
-      date: date ?? this.date,
     );
   }
 
@@ -45,7 +44,7 @@ class OrderModel {
       'trackno': trackno,
       'price': price,
       'userid': userid,
-      'date': date,
+      'date' : date
     };
   }
 
@@ -56,7 +55,6 @@ class OrderModel {
       trackno: map['trackno'],
       price: map['price'],
       userid: map['userid'],
-      date: map['date'],
     );
   }
 
@@ -66,7 +64,7 @@ class OrderModel {
 
   @override
   String toString() {
-    return 'OrderModel(orderid: $orderid, product: $product, trackno: $trackno, price: $price, userid: $userid, date: $date)';
+    return 'OrderModel(orderid: $orderid, product: $product, trackno: $trackno, price: $price, userid: $userid)';
   }
 
   @override
@@ -78,8 +76,7 @@ class OrderModel {
       listEquals(other.product, product) &&
       other.trackno == trackno &&
       other.price == price &&
-      other.userid == userid &&
-      other.date == date;
+      other.userid == userid;
   }
 
   @override
@@ -88,7 +85,6 @@ class OrderModel {
       product.hashCode ^
       trackno.hashCode ^
       price.hashCode ^
-      userid.hashCode ^
-      date.hashCode;
+      userid.hashCode;
   }
 }
