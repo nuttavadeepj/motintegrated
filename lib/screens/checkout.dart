@@ -3,6 +3,7 @@ import 'package:motintegrated/widgets/textfield.dart';
 import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/screens/track.dart';
 
+
 class CheckOut extends StatefulWidget {
   @override
   _CheckOutState createState() => _CheckOutState();
@@ -57,7 +58,8 @@ class _CheckOutState extends State<CheckOut> {
                   'Tracking number will be shown within 2 days after you make purchase.',
                   textAlign: TextAlign.center,
                 ),
-              ),  actions: [
+              ),
+              actions: [
                 FlatButton(
                   textColor: Colors.black,
                   onPressed: () => Navigator.pop(context),
@@ -110,11 +112,18 @@ class _CheckOutState extends State<CheckOut> {
                 ),
                 width: MediaQuery.of(context).size.width / 1.23,
                 child: Column(children: [
-                  Text('Scan the this qrcode to make a purchase.', style: TextStyle(fontFamily: 'Jost', fontSize: 20, fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
+                  Text(
+                    'Scan this qrcode to make a purchase.',
+                    style: TextStyle(
+                        fontFamily: 'Jost',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center,
+                  ),
                   Image.asset(
                     'images/qrcode.png',
-                    width: 400,
-                    height: 400,
+                    width: 300,
+                    height: 300,
                   ),
                   // CheckOutTextField(
                   //     hintText: 'Cardholder Name', errorText: 'Error'),
@@ -130,8 +139,8 @@ class _CheckOutState extends State<CheckOut> {
                   Button(
                       text: 'Save Image',
                       width: 180.0,
-                      onPressed: () {
-                        purchaseSuccess();
+                      onPressed: () async {
+                         purchaseSuccess();
                       }),
                 ]),
               ),
