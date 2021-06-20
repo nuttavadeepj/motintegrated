@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
             create: (_) => AuthProvider(null),
           ),
           ChangeNotifierProxyProvider<AuthProvider, CartProvider>(
-              create: (_) => CartProvider(null, [], [], []),
+              create: (_) => CartProvider(null, [], [], [], 0),
               update: (ctx, auth, cart) =>
-                  CartProvider(auth.token, cart!.items, cart.items2, cart.items3)),
+                  CartProvider(auth.token, cart!.items, cart.items2, cart.items3,cart.summ )),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,

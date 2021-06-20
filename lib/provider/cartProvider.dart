@@ -4,16 +4,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
   String? token = null;
-  
   List<String>? items = [];
   List<String>? items2 = [];
   List<String>? items3 = [];
-  CartProvider(this.token, this.items, this.items2, this.items3);
+  int? summ = 0;
+  CartProvider(this.token, this.items, this.items2, this.items3,this.summ);
   Future<void> fetchItem() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
      items = pref.getStringList('cart');
     items2 = pref.getStringList('cart2');
     items3 = pref.getStringList('cart3');
+    //pref.clear();
     if (items == null) {
       items = [];
     }
@@ -26,7 +27,6 @@ class CartProvider with ChangeNotifier {
     print(items);
     print(items2);
     print(items3);
-    // pref.clear();
   }
 
   Future<void> addItemToCart(String pic) async {
@@ -49,8 +49,7 @@ class CartProvider with ChangeNotifier {
     SharedPreferences pref = await SharedPreferences.getInstance();
     await fetchItem();
     items3?.add(price);
-    pref.setStringList('cart3', items3!);
-    
+    pref.setStringList('cart3', items3!); 
     // await pref.clear();
   }
 
@@ -86,9 +85,17 @@ class CartProvider with ChangeNotifier {
     for (var i = items!.length-1; i >= 0; i--) {
       sum += int.parse(items3![i]);    
     }
-    //pref.setInt('key', sum);
+    //sumAll = pref.setInt('key', sum);
+    if(sum == 0){
+      print('No');
+    }
+    // if(sumAll == 0){
+    //   print('No WAY');
+    // }
+    // pref.setInt('cart', sum);
+    summ = sum;
     notifyListeners();
     //pref.setStringList('cart', sum.toString());
-    print("Sum Product : ${sum}");
+    print("Sum Product : $sum");
   }
 }

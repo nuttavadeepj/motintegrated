@@ -88,7 +88,7 @@ class AllBag extends StatelessWidget {
                               fit: BoxFit.contain))),
                 ),
                 SizedBox(height: 7.0),
-                Text(price,
+                Text('${price} ฿',
                     style: TextStyle(color: Color(0xff9D8671), fontSize: 25.0, fontWeight: FontWeight.w500, fontFamily: 'Jost')),
                 Text(name,
                     style: TextStyle(color: Color(0xff323232), fontSize: 18.0, fontFamily: 'Jost')),

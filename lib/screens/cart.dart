@@ -48,6 +48,7 @@ class Cart extends StatelessWidget {
                 ],
               ));
     }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -102,8 +103,6 @@ class Cart extends StatelessWidget {
                           itemBuilder: (ctx, index) => ListTile(
                             title: Container(
                               child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.start,
-                                //crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
                                     child: Image(
@@ -144,6 +143,7 @@ class Cart extends StatelessWidget {
                                               fontWeight: FontWeight.normal,
                                               fontSize: 20),
                                         ),
+                                        //Text('${cart.summ}'),
                                       ],
                                     ),
                                   ),
@@ -207,6 +207,10 @@ class Cart extends StatelessWidget {
                           itemCount: cart.items!.length,
                         )),
               ),
+              // Container(
+              //     child: Consumer<CartProvider>(
+              //   builder: (ctx, data, _) => Text('${data.summ}'),
+              // )), Example of Consumer
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 30),
                 child: new Container(
@@ -215,7 +219,7 @@ class Cart extends StatelessWidget {
                       Expanded(
                         child: RichText(
                           text: TextSpan(
-                            children: [  
+                            children: [
                               TextSpan(
                                 text: 'Purchase amount',
                                 style: TextStyle(
@@ -229,23 +233,18 @@ class Cart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            
-                            TextSpan(
-                              text: "key.sum", //Problem
-                              style: TextStyle(
-                                  fontFamily: 'Jost',
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 28,
-                                  height: 1.6,
-                                  color: Color(0xff000000)),
-                            ),
-                          ],
+                      Container(
+                          child: Consumer<CartProvider>(
+                        builder: (ctx, data, _) => Text(
+                          '${data.summ}',
+                          style: TextStyle(
+                              fontFamily: 'Jost',
+                              fontWeight: FontWeight.normal,
+                              fontSize: 28,
+                              height: 1.6,
+                              color: Color(0xff000000)),
                         ),
-                      ),
+                      )),
                       RichText(
                         text: TextSpan(
                           children: [
@@ -291,7 +290,7 @@ class Cart extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: '50',
+                              text: '0',
                               style: TextStyle(
                                   fontFamily: 'Jost',
                                   fontWeight: FontWeight.normal,
@@ -354,21 +353,18 @@ class Cart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '950',
-                              style: TextStyle(
-                                  fontFamily: 'Jost',
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 28,
-                                  height: 1.6,
-                                  color: Color(0xffED8449)),
-                            ),
-                          ],
+                      Container(
+                          child: Consumer<CartProvider>(
+                        builder: (ctx, data, _) => Text(
+                          '${data.summ}',
+                          style: TextStyle(
+                              fontFamily: 'Jost',
+                              fontWeight: FontWeight.normal,
+                              fontSize: 28,
+                              height: 1.6,
+                              color: Color(0xffED8449)),
                         ),
-                      ),
+                      )),
                       RichText(
                         text: TextSpan(
                           children: [
