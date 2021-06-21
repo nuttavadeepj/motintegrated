@@ -66,7 +66,7 @@ class Cart extends StatelessWidget {
       OrderModel model = OrderModel(
           orderid: '${order.id}',
           product: ['${cartProvider.items2}'],
-          trackno: 'in progress',
+          trackno: 'In progress',
           price: cartProvider.summ,
           userid: '${firebaseUser.uid}',
           date: FieldValue.serverTimestamp());

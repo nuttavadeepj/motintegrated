@@ -1,69 +1,27 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:motintegrated/widgets/button.dart';
 import 'package:motintegrated/widgets/hamburger.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class TrackPage extends StatefulWidget {
   @override
-  _TrackPageState createState() => _TrackPageState();
+  State<TrackPage> createState() => _TrackPageState();
 }
 
 class _TrackPageState extends State<TrackPage> {
-  var scanresult = [];
-  var orderid;
-  var trackno;
-  bool isWaiting = false;
+  var db;
 
+  var scanresult = [];
+  bool isWaiting = false;
   @override
   void initState() {
     super.initState();
-    getOrder();
-  }
-
-  // Future<void> getOrder() async {
-  //   final firebaseUser = await FirebaseAuth.instance.currentUser!;
-  //   await Firebase.initializeApp().then((value) async {
-  //     var order = await FirebaseFirestore.instance
-  //         .collection('user')
-  //         .doc(firebaseUser.uid)
-  //         .collection('orderid')
-  //         .snapshots();
-
-  //     //   .listen((event) async {
-  //     // setState(() {
-  //     //   orderid = event.data()!['orderid'];
-  //     // });
-  //     // print('order ja => $orderid');
-  //     // await FirebaseFirestore.instance
-  //     //     .collection('order')
-  //     //     .doc(orderid)
-  //     //     .snapshots()
-  //     //     .listen((event) {
-  //     //   setState(() {
-  //     //     trackno = event.data()!['trackno'];
-  //     //   });
-  //     //   print('track naja => $trackno');
-  //     // });
-  //   });
-  // }
-
-  CollectionReference _collectionRef =
-      FirebaseFirestore.instance.collection('user');
-
-  Future<void> getOrder() async {
-    final firebaseUser = await FirebaseAuth.instance.currentUser!;
-    // Get docs from collection reference
-    QuerySnapshot querySnapshot =
-        await _collectionRef.doc(firebaseUser.uid).collection('orderid').get();
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-    print(allData);
+    getId();
   }
 
   void readyCollect() {
@@ -128,74 +86,90 @@ class _TrackPageState extends State<TrackPage> {
             ));
   }
 
+  Future<void> getId() async {
+    var firebaseUser = await FirebaseAuth.instance.currentUser!;
+    var database = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(firebaseUser.uid);
+    setState(() {
+      db = database;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: true,
         title: Text(
           'Tracking',
           style: TextStyle(
-              color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
+              color: Color(0xFF323232), fontSize: 20, fontFamily: 'Jost'),
         ),
         iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+        centerTitle: true,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Tracking number",
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Jost'),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                border: Border.all(
-                                  color: Color(0xFFE6E7C1),
-                                  width: 2,
-                                )),
-                            width: MediaQuery.of(context).size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Order ID: $orderid",
-                                      style: TextStyle(fontSize: 16),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: db.collection('orderid').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else
+            return Container(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 250,
+                    width: double.infinity,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15.0, right: 15, top: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Tracking number",
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Jost'),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 160,
+                              color: Color(0xFFE6E7C1),
+                              child: ListView(
+                                children: snapshot.data!.docs.map((doc) {
+                                  return Card(
+                                      child: ListTile(
+                                    title: Text(
+                                      'TrackNo: ${doc.data()['trackno']}',
+                                      style: TextStyle(fontFamily: 'Jost', fontSize: 17),
                                     ),
-                                    Text("Tracking No: $trackno",
-                                        style: TextStyle(fontSize: 16))
-                                  ]),
-                            )),
-                        SizedBox(
-                          height: 15,
+                                    subtitle: Text(
+                                        'OrderId: ${doc.data()['orderid']}',
+                                      style: TextStyle(fontFamily: 'Jost', fontSize: 15)),
+                                  ));
+                                }).toList(),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                )),
-            SizedBox(
+                  SizedBox(
               height: 350,
               width: double.infinity,
               child: Card(
@@ -219,24 +193,24 @@ class _TrackPageState extends State<TrackPage> {
                 ),
               ),
             ),
-          ],
-        ),
-        padding: EdgeInsets.all(20.0),
+                ],
+              ),
+              padding: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("images/track.png"),
             fit: BoxFit.cover,
           ),
         ),
+            );
+        },
       ),
-      floatingActionButton: FloatingActionButton(
+     floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF4A5F30),
         onPressed: startScan,
         child: Icon(Icons.qr_code_scanner),
-      ),
-    );
+      ),);
   }
-
   startScan() async {
     try {
       await scanner.scanPhoto();

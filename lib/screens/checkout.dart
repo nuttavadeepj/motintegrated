@@ -10,39 +10,6 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-  // void checkOutOrder() {
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //             title: Center(
-  //                 child: Text('Saved Image',
-  //                     style: TextStyle(
-  //                         fontSize: 25, fontWeight: FontWeight.w500))),
-  // content: Padding(
-  //   padding: const EdgeInsets.symmetric(horizontal: 5),
-  //   child: Text(
-  //     'Are you sure you want to check out your product? After confirming, the money in account will be paid off.',
-  //     textAlign: TextAlign.center,
-  //   ),
-  // ),
-  //             actions: [
-  //               FlatButton(
-  //                 textColor: Colors.black,
-  //                 onPressed: () => Navigator.pop(context),
-  //                 child: Text('CANCEL',
-  //                     style: TextStyle(color: Colors.black54, fontSize: 16)),
-  //               ),
-  //               FlatButton(
-  //                 textColor: Colors.black,
-  //                 onPressed: () {
-  //                   purchaseSuccess();
-  //                 },
-  //                 child: Text('ACCEPT',
-  //                     style: TextStyle(fontSize: 16, color: Color(0xFF4A5F30))),
-  //               ),
-  //             ],
-  //           ));
-  // }
 
   void purchaseSuccess() {
     showDialog(
