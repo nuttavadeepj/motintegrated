@@ -24,9 +24,9 @@ class CartProvider with ChangeNotifier {
     if (items3 == null) {
       items3 = [];
     }
-    print(items);
-    print(items2);
-    print(items3);
+    // print(items);
+    // print(items2);
+    // print(items3);
   }
 
   Future<void> addItemToCart(String pic) async {
@@ -62,18 +62,18 @@ class CartProvider with ChangeNotifier {
     pref.setStringList('cart', items!);
     pref.setStringList('cart2', items2!);
     pref.setStringList('cart3', items3!);
-    print(items);
-    print(items2);
-    print(items3);
+    // print(items);
+    // print(items2);
+    // print(items3);
   }
 
   Future<void> removeAllFromCart() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     await fetchItem();
     await pref.clear();
-    print(items);
-    print(items2);
-    print(items3);
+    // print(items);
+    // print(items2);
+    // print(items3);
     await fetchItem();
   }
 
@@ -88,6 +88,6 @@ class CartProvider with ChangeNotifier {
     }
     summ = sum;
     notifyListeners();
-    print("Sum Product : $sum");
+    // print("Sum Product : $sum");
   }
 }

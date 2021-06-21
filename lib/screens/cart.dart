@@ -94,7 +94,7 @@ class Cart extends StatelessWidget {
               Text(
                 'My Cart',
                 style: TextStyle(
-                    color: Color(0xFF323232), fontSize: 26, fontFamily: 'Jost'),
+                    color: Color(0xFF323232), fontSize: 21, fontFamily: 'Jost'),
               ),
             ],
           ),

@@ -4,6 +4,7 @@ import 'package:motintegrated/screens/cart.dart';
 import 'package:motintegrated/screens/product.dart';
 import 'package:motintegrated/screens/allbag.dart';
 import 'package:motintegrated/screens/home.dart';
+import 'package:motintegrated/widgets/hamburger.dart';
 
 class ShopPage extends StatefulWidget {
   @override
@@ -23,26 +24,24 @@ class _ShopPageState extends State<ShopPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(), 
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Color(0xFF323232)),
-          onPressed: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Home()),
-            )
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back_ios, color: Color(0xFF323232), size: 20.0,),
+        //   onPressed: () => {
+        //    Navigator.pop(context)
+        //   },
+        // ),
         title: Text('Pickup',
             style: TextStyle(
-                color: Color(0xFF323232), fontSize: 25, fontFamily: 'Jost')),
+              color: Color(0xFF323232), fontSize: 21, fontFamily: 'Jost')),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.shopping_basket),
-              iconSize: 30.0,
+              iconSize: 28.0,
               color: Color(0xFF323232),
               onPressed: () => {
                 Navigator.push(
@@ -60,10 +59,10 @@ class _ShopPageState extends State<ShopPage>
             padding: const EdgeInsets.only(left: 20.0),
             child: Text(
               'Categories',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Jost'),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, fontFamily: 'Jost'),
             ),
           ),
-          SizedBox(height: 15.0),
+          SizedBox(height: 5.0),
           Padding(
             padding: const EdgeInsets.only(left: 20.0),
             child: TabBar(
@@ -77,26 +76,26 @@ class _ShopPageState extends State<ShopPage>
                 Tab(
                   child: Text(
                     'All',
-                    style: TextStyle(fontSize: 22, fontFamily: 'Jost'),
+                    style: TextStyle(fontSize: 20, fontFamily: 'Jost'),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'Trash Bag',
-                    style: TextStyle(fontSize: 22, fontFamily: 'Jost'),
+                    style: TextStyle(fontSize: 20, fontFamily: 'Jost'),
                   ),
                 ),
                 Tab(
                   child: Text(
                     'Gas',
-                    style: TextStyle(fontSize: 22, fontFamily: 'Jost'),
+                    style: TextStyle(fontSize: 20, fontFamily: 'Jost'),
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height - 30.0,
+            height: MediaQuery.of(context).size.height - 170.0,
             width: double.infinity,
             child: TabBarView(
               controller: _tabController,
@@ -106,7 +105,7 @@ class _ShopPageState extends State<ShopPage>
                 AllGas()
               ],
             ),
-          )
+          ),
         ],
       ),
     );

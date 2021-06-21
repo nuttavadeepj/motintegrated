@@ -105,7 +105,7 @@ class _TrackPageState extends State<TrackPage> {
         title: Text(
           'Tracking',
           style: TextStyle(
-              color: Color(0xFF323232), fontSize: 20, fontFamily: 'Jost'),
+              color: Color(0xFF323232), fontSize: 21, fontFamily: 'Jost'),
         ),
         iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
         backgroundColor: Colors.transparent,

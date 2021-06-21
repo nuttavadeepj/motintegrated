@@ -117,7 +117,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                 });
               });
             }),
-            SizedBox(height: 110),
+            SizedBox(height: 40),
             Profile(
                 AssetImage("images/profileja.png"),
                 '$name',

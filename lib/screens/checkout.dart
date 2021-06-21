@@ -55,7 +55,7 @@ class _CheckOutState extends State<CheckOut> {
           title: Text(
             'Check Out',
             style: TextStyle(
-                color: Color(0xFF323232), fontSize: 25, fontFamily: 'Jost'),
+                color: Color(0xFF323232), fontSize: 21, fontFamily: 'Jost'),
           ),
           iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
           backgroundColor: Colors.transparent,

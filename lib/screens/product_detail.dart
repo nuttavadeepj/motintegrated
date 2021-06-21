@@ -64,7 +64,7 @@ class _ProductDetailState extends State<ProductDetail> {
         ),
         title: Text('Pickup',
             style: TextStyle(
-                color: Color(0xFF323232), fontSize: 25, fontFamily: 'Jost')),
+                color: Color(0xFF323232), fontSize: 21, fontFamily: 'Jost')),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.shopping_basket),
@@ -126,7 +126,7 @@ class _ProductDetailState extends State<ProductDetail> {
               ),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width - 50.0,
@@ -136,7 +136,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   widget.productdetail,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                       color: Color(0xff4A5F30),
                       fontFamily: 'Jost',
                       height: 1.1),
@@ -144,7 +144,6 @@ class _ProductDetailState extends State<ProductDetail> {
               ),
             ),
           ),
-          SizedBox(height: 20.0),
 
           Center(
             child: Container(
