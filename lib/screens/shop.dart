@@ -26,7 +26,8 @@ class _ShopPageState extends State<ShopPage>
     return Scaffold(
       drawer: NavigationDrawerWidget(), 
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Color(0xFF4A5F30)),
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
         centerTitle: true,
         // leading: IconButton(

@@ -193,7 +193,7 @@ class _SpecialDealState extends State<SpecialDeal> {
                               checkOutOrder();
                             }),
                         DealBox(
-                            points: 30,
+                            points: 1000,
                             detail:
                                 'Get free a siphon coffee maker with 150 g. coffee beans.',
                             picture:
