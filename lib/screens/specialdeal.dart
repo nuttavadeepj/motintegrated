@@ -10,7 +10,7 @@ class SpecialDeal extends StatefulWidget {
 }
 
 class _SpecialDealState extends State<SpecialDeal> {
-  int point = 0;
+  String point = '';
 
   @override
   void initState() {

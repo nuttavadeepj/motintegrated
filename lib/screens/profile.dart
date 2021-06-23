@@ -14,23 +14,22 @@ class _ProfilePageState extends State<ProfilePage> {
   String email = '';
   String address = '';
   String phone = '';
-  int point = 0;
+  String point = '';
   @override
   void initState() {
     super.initState();
-    getData();
     getUser();
   }
 
-  Future<void> getData() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User user = await auth.currentUser!;
-    setState(() {
-      name = user.displayName!;
-      email = user.email!;
-    });
-    print('login by $name');
-  }
+  // Future<void> getData() async {
+  //   FirebaseAuth auth = await FirebaseAuth.instance;
+  //   User user = await auth.currentUser!;
+  //   setState(() {
+  //     name = user.displayName!;
+  //     email = user.email!;
+  //   });
+  //   print('login by $name');
+  // }
 
   Future<void> getUser() async {
     final firebaseUser = await FirebaseAuth.instance.currentUser!;
@@ -41,6 +40,8 @@ class _ProfilePageState extends State<ProfilePage> {
           .snapshots()
           .listen((event) {
         setState(() {
+          name = event.data()!['name'];
+          email = event.data()!['email'];
           address = event.data()!['address'];
           phone = event.data()!['phone'];
           point = event.data()!['point'];
