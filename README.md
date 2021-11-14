@@ -1,8 +1,8 @@
 # motintegrated
 
-Flutter mobile application project.
-
 Part of Integrated Project 2.
+
+Flutter mobile application project.
 
 MOT or Miracle Of Trash is an simulated application for receiving and managing food waste from households, markets, and small restaurants. You just use our trash bags and we will receive a compostable waste from you. You send us the waste and accumulate the points then we will have many special deals for you. 
 
